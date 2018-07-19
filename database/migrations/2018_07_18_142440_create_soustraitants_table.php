@@ -15,12 +15,12 @@ class CreateSoustraitantsTable extends Migration
     {
         Schema::create('soustraitants', function(Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('nom');
             $table->string('prenom');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->boolean('service');
+            $table->timestamps();
         });
     }
 

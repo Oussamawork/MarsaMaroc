@@ -15,8 +15,8 @@ class CreateReformesTable extends Migration
     {
         Schema::create('reformes', function(Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->date('date_reforme');
+            $table->timestamps();
         });
     }
 

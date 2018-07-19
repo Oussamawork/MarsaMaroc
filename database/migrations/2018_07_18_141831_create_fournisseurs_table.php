@@ -18,8 +18,8 @@ class CreateFournisseursTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('address');
-            $table->timestamps();
             $table->string('fax');
+            $table->timestamps();
         });
     
     }

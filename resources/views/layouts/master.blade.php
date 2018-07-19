@@ -31,15 +31,15 @@
 	<!-- end::Head -->
     <!-- end::Body -->
 	<body  class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
-		
 		<div class="m-grid m-grid--hor m-grid--root m-page">
+		
 			<!-- begin:: Page -->
 				@include('partials.navbar') 
 				@include('partials.aside_menu')
 				@include('partials.footer')
 			<!--end::Base Scripts -->
-		</div>
-	
+		
+	</div>
 	</body>
 	<!-- end::Body -->
 </html>
