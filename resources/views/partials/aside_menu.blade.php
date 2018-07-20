@@ -303,7 +303,7 @@
 									<span class="m-menu__item-here"></span>
 									<i class="m-menu__link-icon flaticon-clipboard"></i>
 									<span class="m-menu__link-text">
-										Applications
+										Materiels
 									</span>
 									<i class="m-menu__ver-arrow la la-angle-right"></i>
 								</a>
@@ -314,7 +314,7 @@
 											<span class="m-menu__link">
 												<span class="m-menu__item-here"></span>
 												<span class="m-menu__link-text">
-													Applications
+													Materiels
 												</span>
 											</span>
 										</li>

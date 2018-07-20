@@ -34,12 +34,37 @@
 		<div class="m-grid m-grid--hor m-grid--root m-page">
 		
 			<!-- begin:: Page -->
-				@include('partials.navbar') 
+
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+
+				@include('partials.navbar')
 				@include('partials.aside_menu')
+					<div class="m-content">
+						<code>
+						Partial not found: C:\wamp64\www\kt\m5\theme\dist\preview\inc/view/demos/demo12/pages/inner2.php
+					</code>
+				</div>
+			</div>
+
 				@include('partials.footer')
+
 			<!--end::Base Scripts -->
 		
 	</div>
+
+
+
+
+
+
+	<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+		<script src="assets/demo/demo12/base/scripts.bundle.js" type="text/javascript"></script>
+		<!--end::Base Scripts -->   
+        <!--begin::Page Vendors -->
+		<script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+		<!--end::Page Vendors -->  
+        <!--begin::Page Snippets -->
+		<script src="assets/app/js/dashboard.js" type="text/javascript"></script>
 	</body>
 	<!-- end::Body -->
 </html>
