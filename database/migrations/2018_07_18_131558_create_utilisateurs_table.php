@@ -17,8 +17,8 @@ class CreateUtilisateursTable extends Migration
             $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->date('recruitment_date');
-            $table->date('retriment_date')->nullable();
+            $table->string('recrutment_date');
+            $table->string('retirment_date');
             $table->string('matricule')->index();
             $table->string('entite');
             $table->integer('admin_id')->unsigned();

@@ -15,9 +15,9 @@ class CreateUtilisateurMaterielTable extends Migration
     {
         Schema::create('utilisateur_materiel', function(Blueprint $table) {
             $table->increments('id');
-            $table->date('start_affectation');
-            $table->date('end_affectation')->nullable();
-            $table->integer('user_id')->unsigned();
+            $table->string('start_affectation');
+            $table->string('end_affectation')->nullable();
+            $table->integer('utilisateur_id')->unsigned();
             $table->integer('material_id')->unsigned();
             $table->timestamps();
         });    }

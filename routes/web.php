@@ -18,6 +18,22 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
+Route::get('addMaterial', function () {
+    return view('admin.addMaterial');
+});
+Route::get('addAffectation', function () {
+    return view('admin.addAffectation');
+});
+Route::get('addUser', function () {
+    return view('admin.addUser');
+});
+
+
+Route::post("store","admineController@store");
+Route::post("storeUser","admineController@storeUser");
+Route::post("storeAffectation","admineController@storeAffectation");
+
+
 
 Auth::routes();
 

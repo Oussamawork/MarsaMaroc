@@ -31,6 +31,8 @@
     <link href="{{ asset('assets/demo/demo12/base/style.bundle.css') }} " rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="{{ asset('assets/demo/demo12/media/img/logo/favicon.ico') }}" />
+    <link rel="stylesheet" type="text/css" href="jquery-ui/jquery_ui.min.css">
+
 </head>
 <!-- end::Head -->
 <!-- end::Body -->
@@ -45,9 +47,10 @@
 				@include('partials.navbar')
 				@include('partials.aside_menu')
 					<div class="m-content">
-						<code>
-						@yield('content')
-					</code>
+						
+						
+                        @yield('content')
+					
 				</div>
 			</div>
 
@@ -55,14 +58,11 @@
             </div>
 
 			<!--end::Base Scripts -->
-		
-	
 
 
-
-
-
-<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+	</body>
+	<!-- end::Body -->
+    <script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
         <script src="assets/demo/demo12/base/scripts.bundle.js" type="text/javascript"></script>
         <!--end::Base Scripts -->   
         <!--begin::Page Vendors -->
@@ -70,6 +70,18 @@
         <!--end::Page Vendors -->  
         <!--begin::Page Snippets -->
         <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
-	</body>
-	<!-- end::Body -->
+<script type="text/javascript" src="jquery-ui/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="jquery-ui/jquery_ui.min.js" ></script>
+<script type="text/javascript">
+    $("#date_acquisition").datepicker();
+    $("#retirment_date").datepicker();
+    $("#recrutment_date").datepicker();
+    $("#start_affectation").datepicker();
+    $("#end_affectation").datepicker();
+
+
+
+</script>
+
+
 </html>
