@@ -47,7 +47,7 @@ class admineController extends Controller
         $user->date_acquisition=Input::get("date_acquisition");
         $user->save();
 
-        return redirect('/add');
+        return redirect('/getMaterial');
     }
 
     public function storeUser(Request $request)
@@ -62,7 +62,7 @@ class admineController extends Controller
         $user->admin_id=Input::get("admin_id");
         $user->save();
 
-        return redirect('/add');
+        return redirect('/getUser');
     }
 
     public function storeAffectation(Request $request)
@@ -71,16 +71,64 @@ class admineController extends Controller
         $start_affectation=$request->input("start_affectation");
         $end_affectation=$request->input("end_affectation");
         $utilisateur_id=$request->input("utilisateur_id");
-        $material_id=$request->input("material_id");
+        $materiel_id=$request->input("materiel_id");
         
         
-        $data=array('start_affectation'=>$start_affectation,"end_affectation"=>$end_affectation,'utilisateur_id'=>$utilisateur_id,"material_id"=>$material_id);
+        $data=array('start_affectation'=>$start_affectation,"end_affectation"=>$end_affectation,'utilisateur_id'=>$utilisateur_id,"materiel_id"=>$materiel_id);
 
         DB::table('utilisateur_materiel')->insert($data);
 
-        return redirect('/add');
+        return redirect('getAffectation');
+    }
+    
+
+
+    public function getUser()
+    {
+       $utilisateurs=Utilisateur::all();
+        return view('admin.getUser',['utilisateurs'=>$utilisateurs]);
     }
 
+    public function getAffectation()
+    {
+        $affectations=Utilisateur::all();
+        return view('admin.getAffectation',['affectations'=>$affectations]);
+    }
+    public function getMaterial()
+    {
+        $materiels=Materiel::all();
+        return view('admin.getMaterial',compact('materiels'));
+    }
+   
+   public function updateMaterial(Request $request)
+   {
+
+    $materiel=Materiel::find($request->input('id'));
+    $materiel->serial=$request->input('serial');
+    $materiel->label=$request->input('label');
+    $materiel->description=$request->input('description');
+    $materiel->duree_guarantie=$request->input('duree_guarantie');
+    $materiel->date_acquisition=$request->input('date_acquisition');
+    $materiel->save();
+    return view('getMaterial')->with('modification avec succes');
+   }
+   public function getMaterialEdit($id)
+   {
+    $materiel=Materiel::find($id);
+    return view('admin.editMaterial',['materielId'=>$id]);
+   }
+   public function getMaterialDelete($id)
+   {
+    $materiel=Materiel::find($id);
+    $materiel->delete();
+    return redirect()->route('getMate');
+   }
+   public function getUserDelete($id)
+   {
+    $utilisateur=Utilisateur::find($id);
+    $utilisateur->delete();
+    return redirect()->route('getUse');
+   }
     /**
      * Display the specified resource.
      *

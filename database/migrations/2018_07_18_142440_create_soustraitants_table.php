@@ -17,8 +17,8 @@ class CreateSoustraitantsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
-            $table->date('date_debut');
-            $table->date('date_fin');
+            $table->string('date_debut');
+            $table->string('date_fin');
             $table->boolean('service');
             $table->timestamps();
         });

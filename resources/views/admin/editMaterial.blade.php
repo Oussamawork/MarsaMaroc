@@ -1,8 +1,9 @@
 @extends('layouts.master')
 @section('title')
-add affectation
+edit material
 @endsection
 @section('content')
+
 
 
  <section id="form-repeater">
@@ -10,7 +11,7 @@ add affectation
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title" id="repeat-form">L'ajout d'une affectation</h4>
+                  <h4 class="card-title" id="repeat-form">La modification d'un materiel</h4>
                   <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                   <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -26,31 +27,36 @@ add affectation
                     <div class="repeater-default">
                       <div data-repeater-list="car">
                         <div data-repeater-item>
-                          <form class="form row" action="storeAffectation" method="POST">
+                          <form class="form row" action="editMat" method="POST">
                             <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="start_affectation">Debut affectation</label>
+                              <label for="serial">Serial</label>
                               <br>
-                              <input type="text" class="form-control" id="start_affectation"  name="start_affectation">
+                              <input type="text" class="form-control" id="serial"  name="serial" >
                             </div>
                             <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="end_affectation">Fin affectation</label>
+                              <label for="label">libelle</label>
                               <br>
-                              <input type="text" class="form-control" id="end_affectation"  name="end_affectation">
+                              <input type="text" class="form-control" id="label" " name="label">
                             </div>
                             <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="utilisateur_id" class="cursor-pointer">id de l'utilisateur</label>
+                              <label for="description" class="cursor-pointer">description</label>
                               <br>
-                              <input type="text" class="form-control" id="utilisateur_id"  name="utilisateur_id">
+                              <input type="text" class="form-control" id="description"  name="description" >
                             </div>
                             <div class="form-group mb-1 col-sm-12 col-md-2">
-                              <label for="material_id">id du materiel</label>
+                              <label for="tel-input">durée de guarantie</label>
                               <br>
-                              <input class="form-control" type="text"  id="materiel_id" name="materiel_id">
+                              <input class="form-control" type="text"  id="duree_guarantie" name="duree_guarantie" >
+                            </div>
+                            <div class="form-group mb-1 col-sm-12 col-md-2">
+                              <label for="date_acquisition">date d'acquisition</label>
+                              <br>
+                              <input class="form-control" type="text"  id="date_acquisition" name="date_acquisition" >
                             </div>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                            	<input type="hidden" name="_token" value="{{csrf_token()}}">
-                              <input type="submit" class="btn btn-success" data-repeater-delete value="Ajouter"> <i class="ft-x"></i>
+                              <input type="hidden" name="id" value="{{$materielId}}">
+                              <input type="submit" class="btn btn-success" data-repeater-delete value="Soumettre"> <i class="ft-x"></i>
                             </div>
                           </form>
                           <hr>
@@ -63,4 +69,6 @@ add affectation
             </div>
           </div>
         </section>
-@endsection('content')
+        
+       
+@endsection

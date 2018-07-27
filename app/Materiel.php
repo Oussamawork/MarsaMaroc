@@ -8,7 +8,7 @@ class Materiel extends Model
 {
     public function utilisateurs()
     {
-        return $this->belongsToMany('Utilisateur');
+        return $this->belongsToMany('App\Utilisateur','utilisateur_materiel');
     }
 
     public function fournisseur()

@@ -17,7 +17,7 @@ class CreatePannesTable extends Migration
             $table->increments('id');
             $table->string('type')->nullable();
             $table->string('description')->nullable();
-            $table->date('brokendown_date');
+            $table->string('brokendown_date');
             $table->timestamps();
         });
     }

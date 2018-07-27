@@ -16,7 +16,7 @@ class CreateBonsortiesTable extends Migration
       Schema::create('bonsorties', function(Blueprint $table) {
             $table->increments('id');
             $table->string('motif');
-            $table->date('date_sortie');
+            $table->string('date_sortie');
             $table->timestamps();    
 
         });

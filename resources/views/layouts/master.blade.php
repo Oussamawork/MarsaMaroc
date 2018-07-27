@@ -27,11 +27,16 @@
     </script>
     <!--end::Web font -->
     <!--begin::Base Styles -->
+
     <link href="{{ asset('assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/demo/demo12/base/style.bundle.css') }} " rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="{{ asset('assets/demo/demo12/media/img/logo/favicon.ico') }}" />
-    <link rel="stylesheet" type="text/css" href="jquery-ui/jquery_ui.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  @yield('style')
 
 </head>
 <!-- end::Head -->
@@ -70,8 +75,8 @@
         <!--end::Page Vendors -->  
         <!--begin::Page Snippets -->
         <script src="assets/app/js/dashboard.js" type="text/javascript"></script>
-<script type="text/javascript" src="jquery-ui/external/jquery/jquery.js"></script>
-<script type="text/javascript" src="jquery-ui/jquery_ui.min.js" ></script>
+
+
 <script type="text/javascript">
     $("#date_acquisition").datepicker();
     $("#retirment_date").datepicker();
@@ -79,9 +84,11 @@
     $("#start_affectation").datepicker();
     $("#end_affectation").datepicker();
 
-
-
 </script>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+@yield('script')
 
 </html>

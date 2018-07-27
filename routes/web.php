@@ -29,9 +29,37 @@ Route::get('addUser', function () {
 });
 
 
+Route::get('editMaterial/{id}',[
+	'uses'=>'admineController@getMaterialEdit',
+	'as'=>'editMate'
+]);
+Route::get('deleteMaterial/{id}',[
+	'uses'=>'admineController@getMaterialDelete',
+	'as'=>'deleteMate'
+]);
+Route::get('deleteUser/{id}',[
+	'uses'=>'admineController@getUserDelete',
+	'as'=>'deleteUser'
+]);
+
+
+
+Route::get('getAffectation',[
+	'uses'=>'admineController@getAffectation',
+	'as'=>'getAffectation'
+]);
+Route::get('getMaterial',[
+	'uses'=>'admineController@getMaterial',
+	'as'=>'getMate'
+]);
+Route::get('getUser',[
+	'uses'=>'admineController@getUser',
+	'as'=>'getUse'
+]);
 Route::post("store","admineController@store");
 Route::post("storeUser","admineController@storeUser");
 Route::post("storeAffectation","admineController@storeAffectation");
+Route::post("editMat","admineController@updateMaterial");
 
 
 

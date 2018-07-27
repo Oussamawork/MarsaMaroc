@@ -18,8 +18,8 @@ class CreateMaterielsTable extends Migration
             $table->integer('serial')->unique();
             $table->string('label');
             $table->string('description')->nullable();
-            $table->integer('duree_guarantie');
-            $table->date('date_acquisition');
+            $table->string('duree_guarantie');
+            $table->string('date_acquisition');
             $table->timestamps();
         });    }
 

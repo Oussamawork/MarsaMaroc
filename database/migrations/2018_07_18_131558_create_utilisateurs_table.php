@@ -21,7 +21,7 @@ class CreateUtilisateursTable extends Migration
             $table->string('retirment_date');
             $table->string('matricule')->index();
             $table->string('entite');
-            $table->integer('admin_id')->unsigned();
+            $table->integer('admin_id')->nullable();
             $table->timestamps();
         });
     }

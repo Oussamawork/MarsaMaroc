@@ -13,6 +13,6 @@ class Utilisateur extends Model
 
     public function materiels()
     {
-        return $this->belongsToMany('Materiel');
+        return $this->belongsToMany('App\Materiel','utilisateur_materiel')->withPivot('start_affectation', 'end_affectation');
     }
 }
