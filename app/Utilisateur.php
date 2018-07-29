@@ -6,13 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Utilisateur extends Model
 {
+    protected $fillable = ['firstname', 'lastname', 'recrutment_date', 'matricule'];
+
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo(User::class);
     }
 
     public function materiels()
     {
-        return $this->belongsToMany('App\Materiel','utilisateur_materiel')->withPivot('start_affectation', 'end_affectation');
+        return $this->belongsToMany(Materiel::class,'utilisateur_materiel')->withPivot('start_affectation', 'end_affectation');
+    }
+
+    public function entity()
+    {
+        return $this->belongsTo(Entity::class);
     }
 }

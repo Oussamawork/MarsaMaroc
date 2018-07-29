@@ -14,7 +14,7 @@ class CreateUtilisateurMaterielTable extends Migration
     public function up()
     {
         Schema::create('utilisateur_materiel', function(Blueprint $table) {
-            $table->primary(['utilisateur_id','materiel_id']);
+            $table->increments('id');
             $table->string('start_affectation');
             $table->string('end_affectation')->nullable();
             $table->integer('utilisateur_id')->unsigned();

@@ -15,11 +15,13 @@ class CreateMaterielsTable extends Migration
     {
         Schema::create('materiels', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('serial')->unique();
-            $table->string('label');
+            $table->string('serial')->unique();
             $table->string('description')->nullable();
             $table->string('duree_guarantie');
             $table->string('date_acquisition');
+			$table->integer('type_id')->unsigned();
+			$table->integer('fournisseur_id')->unsigned();
+			$table->integer('reforme_id')->nullable()->unsigned();
             $table->timestamps();
         });    }
 

@@ -1,11 +1,11 @@
 
       
 
-		<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
+		<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-light ">
 					<!-- BEGIN: Aside Menu -->
 	<div 
 		id="m_ver_menu" 
-		class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " 
+		class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light " 
 		m-menu-vertical="1"
 		 m-menu-scrollable="0" m-menu-dropdown-timeout="500"  
 		>

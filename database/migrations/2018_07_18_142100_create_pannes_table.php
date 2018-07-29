@@ -18,6 +18,9 @@ class CreatePannesTable extends Migration
             $table->string('type')->nullable();
             $table->string('description')->nullable();
             $table->string('brokendown_date');
+            $table->integer('materiel_id')->unsigned();
+			$table->integer('bonsortie_id')->unsigned();
+			$table->integer('soustraitant_id')->unsigned();
             $table->timestamps();
         });
     }

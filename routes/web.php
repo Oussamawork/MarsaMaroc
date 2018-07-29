@@ -18,15 +18,43 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
-Route::get('addMaterial', function () {
-    return view('admin.addMaterial');
-});
+
+
 Route::get('addAffectation', function () {
     return view('admin.addAffectation');
 });
-Route::get('addUser', function () {
-    return view('admin.addUser');
-});
+
+/* Utilisateur */
+
+Route::get('Utilisateur/addUser',[
+	'uses'=>'UtilisateurController@getUtilisateurview',
+	'as'=>'addUser'
+]);
+
+Route::post('Utilisateur/storeUser',[
+	'uses'=>'UtilisateurController@storeUser',
+	'as'=>'storeUser'
+]);
+
+Route::get('Utilisateur/getUser',[
+	'uses'=>'UtilisateurController@getUtilisateur',
+	'as'=>'getUse'
+]);
+
+
+/* Materiel */
+
+Route::get('Materiel/addMaterial',[
+	'uses'=>'MaterielController@getMatview',
+	'as'=>'getMat'
+]);
+
+Route::post('Materiel/storeMat',[
+	'uses'=>'MaterielController@storeMateriel',
+	'as'=>'store'
+]);
+
+
 
 
 Route::get('editMaterial/{id}',[
@@ -42,27 +70,32 @@ Route::get('deleteUser/{id}',[
 	'as'=>'deleteUser'
 ]);
 
-
-
 Route::get('getAffectation',[
 	'uses'=>'admineController@getAffectation',
 	'as'=>'getAffectation'
 ]);
+
 Route::get('getMaterial',[
 	'uses'=>'admineController@getMaterial',
 	'as'=>'getMate'
 ]);
-Route::get('getUser',[
-	'uses'=>'admineController@getUser',
-	'as'=>'getUse'
+
+
+
+
+
+
+
+Route::post('storeAffectation',[
+	'uses'=>'admineController@storeAffectation',
+	'as'=>'storeAffectation'
 ]);
-Route::post("store","admineController@store");
-Route::post("storeUser","admineController@storeUser");
-Route::post("storeAffectation","admineController@storeAffectation");
-Route::post("editMat","admineController@updateMaterial");
+
+Route::get('editMat',[
+	'uses'=>'admineController@updateMaterial',
+	'as'=>'editMat'
+]);
 
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

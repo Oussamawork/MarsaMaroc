@@ -26,6 +26,7 @@ class admineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
@@ -37,33 +38,9 @@ class admineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $user = new Materiel;
-        $user->serial=Input::get("serial");
-        $user->label=Input::get("label");
-        $user->description=Input::get("description");
-        $user->duree_guarantie=Input::get("duree_guarantie");
-        $user->date_acquisition=Input::get("date_acquisition");
-        $user->save();
+    
 
-        return redirect('/getMaterial');
-    }
-
-    public function storeUser(Request $request)
-    {
-        $user = new Utilisateur;
-        $user->firstname=Input::get("firstname");
-        $user->lastname=Input::get("lastname");
-        $user->recrutment_date=Input::get("recrutment_date");
-        $user->retirment_date=Input::get("retirment_date");
-        $user->matricule=Input::get("matricule");
-        $user->entite=Input::get("entite");
-        $user->admin_id=Input::get("admin_id");
-        $user->save();
-
-        return redirect('/getUser');
-    }
+    
 
     public function storeAffectation(Request $request)
     {
@@ -82,13 +59,6 @@ class admineController extends Controller
     }
     
 
-
-    public function getUser()
-    {
-       $utilisateurs=Utilisateur::all();
-        return view('admin.getUser',['utilisateurs'=>$utilisateurs]);
-    }
-
     public function getAffectation()
     {
         $affectations=Utilisateur::all();
@@ -102,32 +72,34 @@ class admineController extends Controller
    
    public function updateMaterial(Request $request)
    {
-
-    $materiel=Materiel::find($request->input('id'));
+    $materiel=Materiel::find($request['id']);
     $materiel->serial=$request->input('serial');
     $materiel->label=$request->input('label');
     $materiel->description=$request->input('description');
     $materiel->duree_guarantie=$request->input('duree_guarantie');
     $materiel->date_acquisition=$request->input('date_acquisition');
     $materiel->save();
-    return view('getMaterial')->with('modification avec succes');
+    return back()->with('info','modification avec succes');
    }
+   
    public function getMaterialEdit($id)
    {
     $materiel=Materiel::find($id);
     return view('admin.editMaterial',['materielId'=>$id]);
    }
+
    public function getMaterialDelete($id)
    {
     $materiel=Materiel::find($id);
     $materiel->delete();
     return redirect()->route('getMate');
    }
+   
    public function getUserDelete($id)
    {
     $utilisateur=Utilisateur::find($id);
     $utilisateur->delete();
-    return redirect()->route('getUse');
+    return back()->with('info','Utilisateur supprimé avec succès');
    }
     /**
      * Display the specified resource.

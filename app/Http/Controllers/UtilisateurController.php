@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Entity;
+
+use App\Utilisateur;
+
+class UtilisateurController extends Controller
+{
+    public function getUtilisateurview()
+    {
+        $entities = Entity::all();
+        return view('admin.addUtilisateur',compact('entities'));
+    }
+
+    public function storeUser(Request $request)
+    {
+        $this->validate($request, [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'recrutment_date' => 'date_format:Y-m-d|required',
+            'matricule' => 'required',
+            'entite' => 'required|numeric'
+            ]);
+
+        $entity = Entity::where('id',$request['entite'])->first();
+
+        $utilisateur = new Utilisateur([
+            'firstname' => $request['firstname'],
+            'lastname'=> $request['lastname'],
+            'recrutment_date'=> $request['recrutment_date'],
+            'matricule'=> $request['matricule']
+        ]); 
+        
+        $entity->utilisateurs()->save($utilisateur);
+
+        return redirect()->route('getUse');
+    }
+
+    public function getUtilisateur()
+    {
+        $entities = Entity::all();
+       $utilisateurs=Utilisateur::all();
+        return view('admin.getUtilisateur',compact('utilisateurs', 'entities'));
+    }
+}
