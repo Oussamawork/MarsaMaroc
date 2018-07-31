@@ -94,7 +94,7 @@ liste materiels
                         <th title="Field #2">
                             Référence
                         </th>
-                        <th title="Field #3">
+                        <th title="">
                             Type
                         </th>
                         <th title="Field #4">
@@ -109,7 +109,7 @@ liste materiels
                         <th>
                             Durée de guarantie
                         </th>
-                        <th title="Field #9">
+                        <th title="">
                             Status
                         </th>
                         <th>
@@ -121,28 +121,28 @@ liste materiels
                     @foreach($materiels as $mat)
                         <tr>
                             <td>
-                                {{ $mat->id }}
+                                cscsdcsdc
                             </td>
                             <td>
-                                {{ $mat->serial }}
+                                cscssdc
                             </td>
                             <td>
-                                {{ $mat->type->label }}
+                               dscsdsdc
                             </td>
                             <td>
-                               {{ $mat->description }}
+                               csdcsdc}
                             </td>
                             <td>
-                               {{ $mat->fournisseur->name }}
+                               dfsddf
                             </td>
                             <td>
-                                {{ $mat->date_acquisition }}
+                                csdsdc
                             </td>
                             <td>
-                                {{ $mat->duree_guarantie }}
+                                sdfsdfsdf
                             </td>
                             <td>
-                                {{ $mat->user_id === 0 ? 4 : 6 }}   
+                                dcsdcsdc 
                             </td>
                             <td>
                                 <span style="overflow: visible; position: relative; width: 110px;">
@@ -150,10 +150,7 @@ liste materiels
                                         title="Edit details">
                                         <i class="la la-edit"></i>
                                     </a>
-                                    <a href="{{route('deleteUser',['id'=>$mat->id])}}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"
-                                        title="Delete">
-                                        <i class="la la-trash"></i>
-                                    </a>
+                                    
                                 </span>
                             </td>
                         </tr>
@@ -166,6 +163,9 @@ liste materiels
     
 
 @endsection('content')
+
+
+
 
 @section('customJS')
 <script src="{{asset('assets/demo/default/custom/crud/metronic-datatable/base/html-table.js')}}" type="text/javascript"></script>

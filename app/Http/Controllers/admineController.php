@@ -64,29 +64,11 @@ class admineController extends Controller
         $affectations=Utilisateur::all();
         return view('admin.getAffectation',['affectations'=>$affectations]);
     }
-    public function getMaterial()
-    {
-        $materiels=Materiel::all();
-        return view('admin.getMaterial',compact('materiels'));
-    }
+    
    
-   public function updateMaterial(Request $request)
-   {
-    $materiel=Materiel::find($request['id']);
-    $materiel->serial=$request->input('serial');
-    $materiel->label=$request->input('label');
-    $materiel->description=$request->input('description');
-    $materiel->duree_guarantie=$request->input('duree_guarantie');
-    $materiel->date_acquisition=$request->input('date_acquisition');
-    $materiel->save();
-    return back()->with('info','modification avec succes');
-   }
    
-   public function getMaterialEdit($id)
-   {
-    $materiel=Materiel::find($id);
-    return view('admin.editMaterial',['materielId'=>$id]);
-   }
+   
+   
 
    public function getMaterialDelete($id)
    {
@@ -95,12 +77,7 @@ class admineController extends Controller
     return redirect()->route('getMate');
    }
    
-   public function getUserDelete($id)
-   {
-    $utilisateur=Utilisateur::find($id);
-    $utilisateur->delete();
-    return back()->with('info','Utilisateur supprimé avec succès');
-   }
+   
     /**
      * Display the specified resource.
      *

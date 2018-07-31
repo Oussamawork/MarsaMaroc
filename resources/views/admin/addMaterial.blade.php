@@ -17,8 +17,8 @@
               </div>
           </div>
           <!--begin::Form-->
-          <form class="m-form m-form--fit m-form--state m-form--label-align-right m-form--group-seperator-dashed " action="{{route('store')}}" method="POST"> 
-              @CSRF
+          <form class="m-form m-form--fit m-form--state m-form--label-align-right m-form--group-seperator-dashed " action="{{route('store')}}" method="get"> 
+              
               <div class="m-portlet__body">
 
                   <div class="form-group m-form__group row">

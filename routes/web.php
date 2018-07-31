@@ -41,44 +41,67 @@ Route::get('Utilisateur/getUser',[
 	'as'=>'getUse'
 ]);
 
+Route::get('Utilisateur/editUtilisateur/{id}',[
+	'uses'=>'UtilisateurController@editUtilisateur',
+	'as'=>'editUtilisateur'
+]);
+
+Route::get('Utilisateur/updateUtilisateur',[
+	'uses'=>'UtilisateurController@updateUtilisateur',
+	'as'=>'updateUtilisateur'
+]);
+
+Route::get('deleteUser/{id}',[
+	'uses'=>'UtilisateurController@getUserDelete',
+	'as'=>'deleteUser'
+]);
 
 /* Materiel */
 
-Route::get('Materiel/addMaterial',[
-	'uses'=>'MaterielController@getMatview',
+Route::get('Material/addMaterial',[
+	'uses'=>'MaterielController@getMataddview',
 	'as'=>'getMat'
 ]);
 
-Route::post('Materiel/storeMat',[
+Route::get('Material/getMaterial',[
+	'uses'=>'MaterielController@getMaterial',
+	'as'=>'getMate'
+]);
+
+Route::get('Material/storeMat',[
 	'uses'=>'MaterielController@storeMateriel',
 	'as'=>'store'
 ]);
 
-
-
-
-Route::get('editMaterial/{id}',[
-	'uses'=>'admineController@getMaterialEdit',
+Route::get('Material/editMaterial/{id}',[
+	'uses'=>'MaterielController@getMaterielEdit',
 	'as'=>'editMate'
 ]);
+
+Route::get('Material/updateMat/{id}',[
+	'uses'=>'MaterielController@updateMateriel',
+	'as'=>'updateMateriel'
+]);
+
+
+
+
+/* NOT YET */
+
+
 Route::get('deleteMaterial/{id}',[
 	'uses'=>'admineController@getMaterialDelete',
 	'as'=>'deleteMate'
 ]);
-Route::get('deleteUser/{id}',[
-	'uses'=>'admineController@getUserDelete',
-	'as'=>'deleteUser'
-]);
+
+
 
 Route::get('getAffectation',[
 	'uses'=>'admineController@getAffectation',
 	'as'=>'getAffectation'
 ]);
 
-Route::get('getMaterial',[
-	'uses'=>'admineController@getMaterial',
-	'as'=>'getMate'
-]);
+
 
 
 
@@ -91,10 +114,7 @@ Route::post('storeAffectation',[
 	'as'=>'storeAffectation'
 ]);
 
-Route::get('editMat',[
-	'uses'=>'admineController@updateMaterial',
-	'as'=>'editMat'
-]);
+
 
 
 

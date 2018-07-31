@@ -43,7 +43,35 @@ class UtilisateurController extends Controller
     public function getUtilisateur()
     {
         $entities = Entity::all();
-       $utilisateurs=Utilisateur::all();
+        $utilisateurs=Utilisateur::all();
         return view('admin.getUtilisateur',compact('utilisateurs', 'entities'));
+    }
+
+    // Ajaw work
+    public function editUtilisateur($id)
+    {
+        $utilisateur = Utilisateur::find($id);
+        return json_encode($utilisateur);
+    }
+    
+    public function updateUtilisateur(Request $request)
+    {
+        $utilisateur = Utilisateur::find($request['id']);
+
+        $utilisateur->firstname = $request['firstname'];
+        $utilisateur->lastname = $request['lastname'];
+        $utilisateur->recrutment_date = $request['recrutment_date'];
+        $utilisateur->matricule = $request['matricule'];
+        $utilisateur->entity_id = $request['entite'];
+        $utilisateur->save();
+
+        return back();
+    }
+
+    public function getUserDelete($id)
+    {
+        $utilisateur=Utilisateur::find($id);
+        $utilisateur->delete();
+        return back()->with('info','Utilisateur supprimé avec succès');
     }
 }
