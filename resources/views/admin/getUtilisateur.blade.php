@@ -1840,7 +1840,7 @@
 
 @section('customJS')
 
-<script src="{{asset('assets/demo/default/custom/crud/metronic-datatable/base/html-table.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/demo/default/custom/crud/metronic-datatable/base/html-table1.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/demo/default/custom/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>

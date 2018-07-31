@@ -93,20 +93,12 @@ Route::get('deleteMaterial/{id}',[
 	'uses'=>'admineController@getMaterialDelete',
 	'as'=>'deleteMate'
 ]);
-
-
+	
 
 Route::get('getAffectation',[
 	'uses'=>'admineController@getAffectation',
 	'as'=>'getAffectation'
 ]);
-
-
-
-
-
-
-
 
 
 Route::post('storeAffectation',[
