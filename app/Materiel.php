@@ -30,4 +30,5 @@ class Materiel extends Model
     {
         return $this->belongsTo(Type::class);
     }
+    
 }

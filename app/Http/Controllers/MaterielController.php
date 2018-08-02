@@ -9,13 +9,17 @@ use App\Fournisseur;
 use App\Materiel;
 
 use App\Type;
+use DB;
+use PDF;
 
 class MaterielController extends Controller
 {
     public function getMaterial()
     {
         $materiels=Materiel::all();
-        return view('admin.getMaterial',compact('materiels'));
+        $types=Type::all();
+        $fournisseurs=Fournisseur::all();
+        return view('admin.getMaterial',compact('materiels','types','fournisseurs'));
     }
 
     public function getMataddview()
@@ -57,15 +61,27 @@ class MaterielController extends Controller
         return json_encode($materiel);
    }
 
-    public function updateMateriel($id)
+    public function getMaterialDelete($id)
     {
-        // $materiel=Materiel::find($request['id']);
-        // $materiel->serial=$request->input('serial');
-        // $materiel->label=$request->input('label');
-        // $materiel->description=$request->input('description');
-        // $materiel->duree_guarantie=$request->input('duree_guarantie');
-        // $materiel->date_acquisition=$request->input('date_acquisition');
-        // $materiel->save();
-        // return back()->with('info','modification avec succes');
+        $materiel=Materiel::find($id);
+        $materiel->delete();
+        return back()->with('info','Materiel supprimé avec succès');
+    }
+
+    public function updateMateriel(Request $request)
+    {
+         $materiel=Materiel::find($request['id']);
+         $materiel->serial=$request->input('serial');
+         $materiel->type_id=$request->input('type');
+         $materiel->description=$request->input('description');
+         $materiel->fournisseur_id=$request->input('fournisseur');
+         $materiel->duree_guarantie=$request->input('duree_guarantie');
+         $materiel->date_acquisition=$request->input('date_acquisition');
+         $materiel->save();
+         return back()->with('info','modification avec succes');
    }
+
+   //pdf generation
+
+   
 }

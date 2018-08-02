@@ -78,21 +78,83 @@ Route::get('Material/editMaterial/{id}',[
 	'as'=>'editMate'
 ]);
 
-Route::get('Material/updateMat/{id}',[
+Route::get('Material/updateMateriel',[
 	'uses'=>'MaterielController@updateMateriel',
 	'as'=>'updateMateriel'
 ]);
 
 
 
+Route::get('deleteMaterial/{id}',[
+	'uses'=>'admineController@getMaterialDelete',
+	'as'=>'deleteMaterial'
+]);
+
+
+/* Fournisseur */
+
+
+
+Route::get('Fournisseur/getFournisseur',[
+	'uses'=>'FournisseurController@getFournisseur',
+	'as'=>'getFournisseur'
+]);
+
+Route::get('Fournisseur/addFournisseur',[
+	'uses'=>'FournisseurController@getFouraddview',
+	'as'=>'addFournisseur'
+]);
+
+
+Route::get('Fournisseur/storeFour',[
+	'uses'=>'FournisseurController@storeFournisseur',
+	'as'=>'storeFournisseur'
+]);
+
+Route::get('deleteFournisseur/{id}',[
+	'uses'=>'FournisseurController@getFournisseurDelete',
+	'as'=>'deleteFournisseur'
+]);
+
+Route::get('Fournisseur/updateFournisseur',[
+	'uses'=>'FournisseurController@updateFournisseur',
+	'as'=>'updateFournisseur'
+]);
+
+Route::get('Fournisseur/editFournisseur/{id}',[
+	'uses'=>'FournisseurController@getFournisseurEdit',
+	'as'=>'editFournisseur'
+]);
+
+
+/* type et entite */
+
+
+Route::get('Type/addType',[
+	'uses'=>'TypeController@getaddview',
+	'as'=>'addType'
+]);
+
+Route::get('Type/storeType',[
+	'uses'=>'TypeController@storeType',
+	'as'=>'storeType'
+]);
+
+
+Route::get('Entite/storeEntite',[
+	'uses'=>'EntityController@storeEntity',
+	'as'=>'storeEntity'
+]);
+
+Route::get('Entite/addEntite',[
+	'uses'=>'EntityController@getaddview',
+	'as'=>'addEntity'
+]);
+
+
 
 /* NOT YET */
 
-
-Route::get('deleteMaterial/{id}',[
-	'uses'=>'admineController@getMaterialDelete',
-	'as'=>'deleteMate'
-]);
 	
 
 Route::get('getAffectation',[
@@ -105,6 +167,11 @@ Route::post('storeAffectation',[
 	'uses'=>'admineController@storeAffectation',
 	'as'=>'storeAffectation'
 ]);
+
+
+
+
+
 
 
 

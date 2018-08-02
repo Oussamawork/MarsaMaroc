@@ -49,7 +49,7 @@ class UtilisateurController extends Controller
 
     // Ajaw work
     public function editUtilisateur($id)
-    {
+        {
         $utilisateur = Utilisateur::find($id);
         
         return json_encode($utilisateur);
