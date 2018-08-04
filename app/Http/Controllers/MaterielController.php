@@ -30,10 +30,18 @@ class MaterielController extends Controller
 
     public function storeMateriel(Request $request)
     {   
+
+        $this->validate($request, [
+            'serial' => 'required|string',
+            'type' => 'required|numeric|exists:types,id',
+            'fournisseur' => 'required|numeric|exists:fournisseurs,id',
+            'date_acquisition' => 'date_format:Y-m-d|required',
+            'duree_guarantie' => 'required|numeric',
+        ]);
+
+
         $type = Type::find($request['type']);
-
         $materiel = new Materiel;
-
         $four = Fournisseur::find($request['fournisseur']);
         
         $materiel->serial = $request['serial'];
@@ -57,23 +65,33 @@ class MaterielController extends Controller
    }
 
     public function getMaterialDelete($id)
-    {
+    {   
         $materiel=Materiel::find($id);
-        $materiel->delete();
+        $reforme = Reforme::find($materiel->reforme_id);
+        $reforme->materiels()->delete();
+        $reforme->delete();
         return back()->with('info','Materiel supprimé avec succès');
     }
 
     public function updateMateriel(Request $request)
     {
-         $materiel=Materiel::find($request['id']);
-         $materiel->serial=$request->input('serial');
-         $materiel->type_id=$request->input('type');
-         $materiel->description=$request->input('description');
-         $materiel->fournisseur_id=$request->input('fournisseur');
-         $materiel->duree_guarantie=$request->input('duree_guarantie');
-         $materiel->date_acquisition=$request->input('date_acquisition');
-         $materiel->save();
-         return back()->with('info','modification avec succes');
+        $this->validate($request, [
+            'serial' => 'required|string',
+            'type' => 'required|numeric|exists:types,id',
+            'fournisseur' => 'required|numeric|fournisseurs:types,id',
+            'date_acquisition' => 'date_format:Y-m-d|required',
+            'duree_guarantie' => 'required|numeric',
+        ]);
+
+        $materiel=Materiel::find($request['id']);
+        $materiel->serial=$request->input('serial');
+        $materiel->type_id=$request->input('type');
+        $materiel->description=$request->input('description');
+        $materiel->fournisseur_id=$request->input('fournisseur');
+        $materiel->duree_guarantie=$request->input('duree_guarantie');
+        $materiel->date_acquisition=$request->input('date_acquisition');
+        $materiel->save();
+        return back()->with('info','Modification avec succes');
    }
 
 

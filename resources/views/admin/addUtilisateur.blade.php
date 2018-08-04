@@ -82,6 +82,9 @@
                                     Entité : 
                                   </label>
                                   <select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="entite">
+                                        <option value="">
+                                            Veuillez choisir l'entité
+                                        </option>
                                         @foreach($entities as $entity)
                                             <option value="{{ $entity->id }}">
                                                 {{ $entity->label }}

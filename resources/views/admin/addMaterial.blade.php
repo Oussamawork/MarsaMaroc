@@ -27,7 +27,7 @@
                             Référence:
                           </label>
                           <input type="text" class="form-control m-input m-input--air m-input--pill m-form--state" id="inputDanger1" name="serial" placeholder="Entrer la référence du matériel" value="{{ Session('serial') ? Session('serial') : old('serial') }}">
-                          @if ($errors->has('serial'))serial
+                            @if ($errors->has('serial'))
                                 <div class="form-control-feedback">
                                     {{ $errors->first('serial') }}
                                 </div>

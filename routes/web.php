@@ -90,7 +90,7 @@ Route::get('Material/reformMateriel',[
 ]);
 
 Route::get('deleteMaterial/{id}',[
-	'uses'=>'admineController@getMaterialDelete',
+	'uses'=>'MaterielController@getMaterialDelete',
 	'as'=>'deleteMaterial'
 ]);
 
