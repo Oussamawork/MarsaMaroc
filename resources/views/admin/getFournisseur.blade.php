@@ -21,48 +21,37 @@ liste fournisseurs
 
 
 <div class="m-portlet m-portlet--mobile">
-        <div class="m-portlet__head">
-            <div class="m-portlet__head-caption">
-                <div class="m-portlet__head-title">
-                    <h3 class="m-portlet__head-text">
-                        Liste des fournisseurs
-                    </h3>
-                </div>
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Liste des fournisseurs
+                </h3>
             </div>
+        </div>
 
 
- <div class="m-portlet__head-tools">
-                <ul class="m-portlet__nav">
-                    <li class="m-portlet__nav-item">
-                        <a href="{{route('addFournisseur')}}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air">
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a href="{{route('addFournisseur')}}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air">
+                        <span>
+                            <i class="la la-cart-plus"></i>
                             <span>
-                                <i class="la la-cart-plus"></i>
-                                <span>
-                                    Nouveau Fournisseur
-                                </span>
+                                Nouveau Fournisseur
                             </span>
-                        </a>
-                    </li>
-                    
-                  
-                </ul>
-            
+                        </span>
+                    </a>
+                </li>
+            </ul>     
         </div>
-
-
-
-        </div>
-        <div class="m-portlet__body">
-            
-
-
-           
-    
-            <!--begin: Datatable -->
-             <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
-           <thead>
-              <tr>
-                      <th title="ID"> 
+    </div>
+    <div class="m-portlet__body">
+        <!--begin: Datatable -->
+            <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+            <thead>
+                <tr>
+                    <th title="ID"> 
                             ID
                         </th>
                         <th>
@@ -77,42 +66,92 @@ liste fournisseurs
                         <th>
                             Fax
                         </th>
-                     
+                    
                         <th>
                             Actions
                         </th>
-                       
-             </tr>
-          </thead>
-                                    <tbody>
-                                        @foreach($fournisseurs as $f)
-                                        <tr>
-                                            <td>{{$f->id}}</td>
-                                             <td>{{$f->name}}</td>
-                                              <td>{{$f->phone}}</td>
-                                               <td>{{$f->address}}</td>
-                                                <td>{{$f->fax}}</td>
-                                                  <td>
-                                                   
-                                                      <span style="overflow: visible; position: relative; width: 110px;">
-                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit"
-                                    data-id="{{ $f->id }}"
-                                   >
-                                    
+                        <th>
+                            Actions
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($fournisseurs as $f)
+                    <tr>
+                        <td>{{$f->id}}</td>
+                        <td>{{$f->name}}</td>
+                        <td>{{$f->phone}}</td>
+                        <td>{{$f->address}}</td>
+                        <td>{{$f->fax}}</td>
+                        <td>
+                            <span style="overflow: visible; position: relative; width: 110px;">
+                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $f->id }}">
                                     <i class="la la-edit"></i>
                                 </button>
-                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"
-                                             title="Delete">
-                                            <i class="la la-trash"></i>
-                                           </a>
-                                                    </span>
-
-                                                    </td>
-                                                    
-                                         </tr>
-
-                                    @endforeach
-                                    </tbody>
+                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td>
+                            <span style="overflow: visible; position: relative; width: 110px;">
+                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $f->id }}">
+                                    <i class="la la-edit"></i>
+                                </button>
+                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td>
+                            <span style="overflow: visible; position: relative; width: 110px;">
+                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $f->id }}">
+                                    <i class="la la-edit"></i>
+                                </button>
+                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th title="ID"> 
+                        ID
+                    </th>
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Telephone
+                    </th>
+                    <th>
+                        Adresse
+                    </th>
+                    <th>
+                        Fax
+                    </th>
+                
+                    <th>
+                        Actions
+                    </th>                   
+                    <th>
+                        Actions
+                    </th>                   
+                    <th>
+                        Actions
+                    </th>                   
+                </tr>
+            </tfoot>
+        </table>
+    <!--end: Datatable -->
+    </div>
+</div>
 
 
 <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
@@ -162,8 +201,8 @@ liste fournisseurs
                                 </div>
                             @endif
                         </div>
-                     
-                       </div>
+                        
+                        </div>
                     
                         <div class="form-group m-form__group row">
                         <div class="div col-lg-6 {{ $errors->has('address') ? 'has-danger' : '' }}">
@@ -189,8 +228,8 @@ liste fournisseurs
                                 </div>
                             @endif
                         </div>
-                     
-                       </div>
+                        
+                        </div>
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-gray" data-dismiss="modal">
@@ -206,39 +245,6 @@ liste fournisseurs
     </div>
 </div>
 
-
-                  <tfoot>
-                 <tr>
-                      <th title="ID"> 
-                            ID
-                        </th>
-                        <th>
-                            Nom
-                        </th>
-                        <th>
-                            Telephone
-                        </th>
-                        <th>
-                            Adresse
-                        </th>
-                        <th>
-                            Fax
-                        </th>
-                     
-                        <th>
-                            Actions
-                        </th>                   
-                 </tr>
-                </tfoot>
-                                </table>
-            <!--end: Datatable -->
-        
-    </div>
-    </div>
-
-
-
-
      
            
 
@@ -249,8 +255,8 @@ liste fournisseurs
 
 @section('customJS')
 
-<script src="../../../assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-<script src="../../../assets/demo/default/custom/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
+<script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/demo/default/custom/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
 <script>
 /* Getting infos from the table to the modal */
     $("#Edit").on('show.bs.modal',function(e){

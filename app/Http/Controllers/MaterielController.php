@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Fournisseur;
-
 use App\Materiel;
-
 use App\Type;
-use DB;
-use PDF;
+use App\Utilisateur;
+use App\Reforme;
+use Carbon;
 
 class MaterielController extends Controller
 {
@@ -30,11 +29,7 @@ class MaterielController extends Controller
     }
 
     public function storeMateriel(Request $request)
-    {
-        
-        
-        
-        
+    {   
         $type = Type::find($request['type']);
 
         $materiel = new Materiel;
@@ -54,7 +49,7 @@ class MaterielController extends Controller
         return redirect()->route('getMate');
     }
 
-    // AJAX WORK NOT USED YET
+    // AJAX WORK
     public function getMaterielEdit($id)
    {
         $materiel=Materiel::find($id);
@@ -81,7 +76,30 @@ class MaterielController extends Controller
          return back()->with('info','modification avec succes');
    }
 
-   //pdf generation
+
+   //Affecter un materiel
+
+   public function addMatAffectation(Request $request)
+   {
+        $utilisateur = Utilisateur::find($request['id_utilisateur']);
+
+        
+   }
+   
+   public function reformMateriel(Request $request)
+   {
+        $mytime = Carbon\Carbon::now();
+
+        $reforme = new Reforme;  
+        $reforme->date_reforme = $mytime->toDateString() ;
+        $reforme->save();
+
+        $mat = Materiel::find($request['id']);
+
+        $reforme->materiels()->save($mat);
+
+        return back()->with('info','Matériel reformé');
+   }
 
    
 }

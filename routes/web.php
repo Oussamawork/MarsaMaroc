@@ -56,6 +56,7 @@ Route::get('deleteUser/{id}',[
 	'as'=>'deleteUser'
 ]);
 
+
 /* Materiel */
 
 Route::get('Material/addMaterial',[
@@ -83,7 +84,10 @@ Route::get('Material/updateMateriel',[
 	'as'=>'updateMateriel'
 ]);
 
-
+Route::get('Material/reformMateriel',[
+	'uses'=>'MaterielController@reformMateriel',
+	'as'=>'reformMateriel'
+]);
 
 Route::get('deleteMaterial/{id}',[
 	'uses'=>'admineController@getMaterialDelete',
