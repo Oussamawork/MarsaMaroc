@@ -23,7 +23,7 @@ class UtilisateurController extends Controller
             'lastname' => 'required|string',
             'recrutment_date' => 'date_format:Y-m-d|required',
             'matricule' => 'required',
-            'entite' => 'required|numeric'
+            'entite' => 'required|numeric|exists:entities,id'
             ]);
 
         $entity = Entity::where('id',$request['entite'])->first();
@@ -58,6 +58,15 @@ class UtilisateurController extends Controller
 
     public function updateUtilisateur(Request $request)
     {
+
+        $this->validate($request, [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'recrutment_date' => 'date_format:Y-m-d|required',
+            'matricule' => 'required',
+            'entite' => 'required|numeric|exists:entities,id'
+            ]);
+
         $utilisateur = Utilisateur::find($request['id']);
 
         $utilisateur->firstname = $request['firstname'];
@@ -67,7 +76,7 @@ class UtilisateurController extends Controller
         $utilisateur->entity_id = $request['entite'];
         $utilisateur->save();
 
-        return back();
+        return back()->with('info','Modification avec succes');
     }
 
     public function getUserDelete($id)

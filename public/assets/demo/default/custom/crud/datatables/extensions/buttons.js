@@ -6,7 +6,7 @@ var DatatablesExtensionButtons = {
             dom: "<'row'<'col-sm-6 text-left'f><'col-sm-6 text-right'B>>\n\t\t\t<'row'<'col-sm-12'tr>>\n\t\t\t<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>",
             buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
             columnDefs: [{
-                targets: 6,
+                targets: 7,
                 render: function (t, e, a, n) {
                     var s = {
                         1: {
@@ -22,11 +22,11 @@ var DatatablesExtensionButtons = {
                             class: " m-badge--primary"
                         },
                         4: {
-                            title: "Success",
+                            title: "Affecter",
                             class: " m-badge--success"
                         },
                         5: {
-                            title: "Info",
+                            title: "Disponible",
                             class: " m-badge--info"
                         },
                         6: {
@@ -34,14 +34,14 @@ var DatatablesExtensionButtons = {
                             class: " m-badge--danger"
                         },
                         7: {
-                            title: "Warning",
+                            title: "Réformer",
                             class: " m-badge--warning"
                         }
                     };
                     return void 0 === s[t] ? t : '<span class="m-badge ' + s[t].class + ' m-badge--wide">' + s[t].title + "</span>"
                 }
             }, {
-                targets: 7,
+                targets: 8,
                 render: function (t, e, a, n) {
                     var s = {
                         1: {

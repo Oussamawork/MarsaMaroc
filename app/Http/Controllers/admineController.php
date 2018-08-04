@@ -69,14 +69,6 @@ class admineController extends Controller
    
    
    
-
-   public function getMaterialDelete($id)
-   {
-    $materiel=Materiel::find($id);
-    $materiel->delete();
-    return redirect()->route('getMate');
-   }
-   
    
     /**
      * Display the specified resource.

@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Fournisseur;
-
 use App\Materiel;
-
 use App\Type;
-use DB;
-use PDF;
+use App\Utilisateur;
+use App\Reforme;
+use Carbon;
 
 class MaterielController extends Controller
 {
@@ -30,15 +29,19 @@ class MaterielController extends Controller
     }
 
     public function storeMateriel(Request $request)
-    {
-        
-        
-        
-        
+    {   
+
+        $this->validate($request, [
+            'serial' => 'required|string',
+            'type' => 'required|numeric|exists:types,id',
+            'fournisseur' => 'required|numeric|exists:fournisseurs,id',
+            'date_acquisition' => 'date_format:Y-m-d|required',
+            'duree_guarantie' => 'required|numeric',
+        ]);
+
+
         $type = Type::find($request['type']);
-
         $materiel = new Materiel;
-
         $four = Fournisseur::find($request['fournisseur']);
         
         $materiel->serial = $request['serial'];
@@ -54,7 +57,7 @@ class MaterielController extends Controller
         return redirect()->route('getMate');
     }
 
-    // AJAX WORK NOT USED YET
+    // AJAX WORK
     public function getMaterielEdit($id)
    {
         $materiel=Materiel::find($id);
@@ -62,26 +65,59 @@ class MaterielController extends Controller
    }
 
     public function getMaterialDelete($id)
-    {
+    {   
         $materiel=Materiel::find($id);
-        $materiel->delete();
+        $reforme = Reforme::find($materiel->reforme_id);
+        $reforme->materiels()->delete();
+        $reforme->delete();
         return back()->with('info','Materiel supprimé avec succès');
     }
 
     public function updateMateriel(Request $request)
     {
-         $materiel=Materiel::find($request['id']);
-         $materiel->serial=$request->input('serial');
-         $materiel->type_id=$request->input('type');
-         $materiel->description=$request->input('description');
-         $materiel->fournisseur_id=$request->input('fournisseur');
-         $materiel->duree_guarantie=$request->input('duree_guarantie');
-         $materiel->date_acquisition=$request->input('date_acquisition');
-         $materiel->save();
-         return back()->with('info','modification avec succes');
+        $this->validate($request, [
+            'serial' => 'required|string',
+            'type' => 'required|numeric|exists:types,id',
+            'fournisseur' => 'required|numeric|fournisseurs:types,id',
+            'date_acquisition' => 'date_format:Y-m-d|required',
+            'duree_guarantie' => 'required|numeric',
+        ]);
+
+        $materiel=Materiel::find($request['id']);
+        $materiel->serial=$request->input('serial');
+        $materiel->type_id=$request->input('type');
+        $materiel->description=$request->input('description');
+        $materiel->fournisseur_id=$request->input('fournisseur');
+        $materiel->duree_guarantie=$request->input('duree_guarantie');
+        $materiel->date_acquisition=$request->input('date_acquisition');
+        $materiel->save();
+        return back()->with('info','Modification avec succes');
    }
 
-   //pdf generation
+
+   //Affecter un materiel
+
+   public function addMatAffectation(Request $request)
+   {
+        $utilisateur = Utilisateur::find($request['id_utilisateur']);
+
+        
+   }
+   
+   public function reformMateriel(Request $request)
+   {
+        $mytime = Carbon\Carbon::now();
+
+        $reforme = new Reforme;  
+        $reforme->date_reforme = $mytime->toDateString() ;
+        $reforme->save();
+
+        $mat = Materiel::find($request['id']);
+
+        $reforme->materiels()->save($mat);
+
+        return back()->with('info','Matériel reformé');
+   }
 
    
 }

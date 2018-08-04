@@ -90,6 +90,9 @@ liste sous-traitants
                         <th class="col1">
                             
                         </th>
+                        <th class="col1">
+                            
+                        </th>
                        
                        
              </tr>
@@ -122,6 +125,7 @@ liste sous-traitants
                                                     </span>
 
                                                     </td>
+                                                 <td class="col1"></td>
                                                  <td class="col1"></td>
                                                  
                                                  
@@ -160,6 +164,9 @@ liste sous-traitants
                        
                         <th>
                             Actions
+                        </th>
+                        <th class="col1">
+                            
                         </th>
                         <th class="col1">
                             
