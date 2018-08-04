@@ -156,6 +156,41 @@ Route::get('Entite/addEntite',[
 ]);
 
 
+/* sous_traitent */
+
+Route::get('Subcontractor/getSubcontractor',[
+	'uses'=>'SubcontractorController@getSubcontractor',
+	'as'=>'getSubcontractor'
+]);
+
+Route::get('Subcontractor/addSubcontractor',[
+	'uses'=>'SubcontractorController@getSubaddview',
+	'as'=>'addSubcontractor'
+]);
+
+
+Route::get('Subcontractor/storeSubcontractor',[
+	'uses'=>'SubcontractorController@storeSubcontractor',
+	'as'=>'storeSubcontractor'
+]);
+
+Route::get('deleteSubcontractor/{id}',[
+	'uses'=>'SubcontractorController@getSubcontractorDelete',
+	'as'=>'deleteSubcontractor'
+]);
+
+Route::get('Subcontractor/updateSubcontractor',[
+	'uses'=>'SubcontractorController@updateSubcontractor',
+	'as'=>'updateSubcontractor'
+]);
+
+Route::get('Subcontractor/editSubcontractor/{id}',[
+	'uses'=>'SubcontractorController@getSubcontractorEdit',
+	'as'=>'editSubcontractor'
+]);
+
+
+
 
 /* NOT YET */
 

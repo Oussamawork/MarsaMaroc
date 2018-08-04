@@ -4,6 +4,10 @@ liste fournisseurs
 @endsection
 @section('customCSS')
 <link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .col1 {display: none; }
+</style>
+
 @endsection
 @section('content')
 
@@ -70,12 +74,18 @@ liste fournisseurs
                         <th>
                             Actions
                         </th>
-                        <th>
-                            Actions
+                        <th class="col1">
+                            
                         </th>
-                        <th>
-                            Actions
+                        <th class="col1">
+                            
                         </th>
+                         <th class="col1">
+                            
+                        </th>
+                         
+                   
+
                 </tr>
             </thead>
             <tbody>
@@ -96,26 +106,11 @@ liste fournisseurs
                                 </a>
                             </span>
                         </td>
-                        <td>
-                            <span style="overflow: visible; position: relative; width: 110px;">
-                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $f->id }}">
-                                    <i class="la la-edit"></i>
-                                </button>
-                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
-                                    <i class="la la-trash"></i>
-                                </a>
-                            </span>
-                        </td>
-                        <td>
-                            <span style="overflow: visible; position: relative; width: 110px;">
-                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $f->id }}">
-                                    <i class="la la-edit"></i>
-                                </button>
-                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
-                                    <i class="la la-trash"></i>
-                                </a>
-                            </span>
-                        </td>
+                        <td class="col1"></td>
+                        <td class="col1"></td>
+                         <td class="col1"></td>
+                       
+                        
                     </tr>
                 @endforeach
             </tbody>
@@ -139,13 +134,17 @@ liste fournisseurs
                 
                     <th>
                         Actions
-                    </th>                   
-                    <th>
-                        Actions
-                    </th>                   
-                    <th>
-                        Actions
-                    </th>                   
+                    </th>    
+                    <th class="col1">
+                            
+                        </th>
+                        <th class="col1">
+                            
+                        </th> 
+                        <th class="col1">
+                            
+                        </th> 
+                                               
                 </tr>
             </tfoot>
         </table>
@@ -245,8 +244,6 @@ liste fournisseurs
     </div>
 </div>
 
-     
-           
 
 @endsection('content')
 

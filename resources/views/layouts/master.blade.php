@@ -83,6 +83,8 @@
             $("#recrutment_date").datepicker({format: 'yyyy-mm-dd'});
             $("#start_affectation").datepicker({format: 'yyyy-mm-dd'});
             $("#end_affectation").datepicker({format: 'yyyy-mm-dd'});
+            $("#date_debut").datepicker({format: 'yyyy-mm-dd'});
+            $("#date_fin").datepicker({format: 'yyyy-mm-dd'});
         </script>
     
         @yield('customJS')
