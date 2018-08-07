@@ -39,7 +39,7 @@
                             Type :
                           </label>
                           <select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="type">
-                                <option value="">
+                                <option value="" disabled selected>
                                     Veuillez choisir le type du matériel
                                 </option>
                                 @foreach($types as $type)
@@ -74,7 +74,7 @@
                                 Fournisseur :
                             </label>
                             <select class="form-control m-input m-input--air m-input--pill" id="exampleSelect1" name="fournisseur">
-                                <option value="">
+                                <option value="" disabled selected>
                                     Veuillez choisir le fournisseur
                                 </option>
                                 @foreach($fournisseurs as $fournisseur)

@@ -10,6 +10,7 @@ use App\Type;
 use App\Utilisateur;
 use App\Reforme;
 use Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class MaterielController extends Controller
 {
@@ -18,7 +19,8 @@ class MaterielController extends Controller
         $materiels=Materiel::all();
         $types=Type::all();
         $fournisseurs=Fournisseur::all();
-        return view('admin.getMaterial',compact('materiels','types','fournisseurs'));
+        $utilisateurs=Utilisateur::all();
+        return view('admin.getMaterial',compact('materiels','types','fournisseurs','utilisateurs'));
     }
 
     public function getMataddview()
@@ -67,22 +69,28 @@ class MaterielController extends Controller
     public function getMaterialDelete($id)
     {   
         $materiel=Materiel::find($id);
-        $reforme = Reforme::find($materiel->reforme_id);
-        $reforme->materiels()->delete();
-        $reforme->delete();
+        if ($materiel->reforme_id != null) {
+            $reforme = Reforme::find($materiel->reforme_id);
+            $reforme->materiels()->delete();
+            $reforme->delete();
+        } else {
+            $materiel->delete();
+        }
         return back()->with('info','Materiel supprimé avec succès');
     }
+
+
 
     public function updateMateriel(Request $request)
     {
         $this->validate($request, [
             'serial' => 'required|string',
             'type' => 'required|numeric|exists:types,id',
-            'fournisseur' => 'required|numeric|fournisseurs:types,id',
+            'fournisseur' => 'required|numeric|exists:fournisseurs,id',
             'date_acquisition' => 'date_format:Y-m-d|required',
             'duree_guarantie' => 'required|numeric',
         ]);
-
+            
         $materiel=Materiel::find($request['id']);
         $materiel->serial=$request->input('serial');
         $materiel->type_id=$request->input('type');
@@ -91,7 +99,7 @@ class MaterielController extends Controller
         $materiel->duree_guarantie=$request->input('duree_guarantie');
         $materiel->date_acquisition=$request->input('date_acquisition');
         $materiel->save();
-        return back()->with('info','Modification avec succes');
+        return back()->with('info','Modification avec succès');
    }
 
 
@@ -99,11 +107,36 @@ class MaterielController extends Controller
 
    public function addMatAffectation(Request $request)
    {
-        $utilisateur = Utilisateur::find($request['id_utilisateur']);
-
+        $this->validate($request, [
+            'serial' => 'required|string',
+            'utilisateur_id' => 'required|numeric|exists:utilisateurs,id',
+            'start_affectation' => 'date_format:Y-m-d|required',
+        ]);
         
-   }
+        $utilisateur = Utilisateur::find($request['utilisateur_id']);
+
+        $materiel = Materiel::where('serial',$request['serial'])->first();
+        
+        $utilisateur->materiels()->attach($materiel, ['start_affectation' => $request['start_affectation']]);
+
+        return back()->with('info','Matériel affecter avec succès');
+    }
    
+    public function MatDesaffect($id)
+    {
+        $mytime = Carbon\Carbon::now();
+
+        $materiel = Materiel::find($id);
+        
+        $u = $materiel->utilisateurs->last()->pivot->utilisateur_id;
+        
+        $utilisateur = Utilisateur::find($u);
+        
+        $utilisateur->materiels()->updateExistingPivot($materiel, ['end_affectation' => $mytime->toDateString()]);
+
+        return back()->with('info','Matériel désaffecter avec succès');
+    }
+
    public function reformMateriel(Request $request)
    {
         $mytime = Carbon\Carbon::now();

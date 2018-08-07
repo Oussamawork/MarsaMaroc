@@ -40,25 +40,6 @@ var DatatablesExtensionButtons = {
                         };
                         return void 0 === s[t] ? t : '<span class="m-badge ' + s[t].class + ' m-badge--wide">' + s[t].title + "</span>"
                     }
-                }, {
-                    targets: 8,
-                    render: function (t, e, a, n) {
-                        var s = {
-                            1: {
-                                title: "Online",
-                                state: "danger"
-                            },
-                            2: {
-                                title: "Retail",
-                                state: "primary"
-                            },
-                            3: {
-                                title: "Direct",
-                                state: "accent"
-                            }
-                        };
-                        return void 0 === s[t] ? t : '<span class="m-badge m-badge--' + s[t].state + ' m-badge--dot"></span>&nbsp;<span class="m--font-bold m--font-' + s[t].state + '">' + s[t].title + "</span>"
-                    }
                 }]
             }),
 

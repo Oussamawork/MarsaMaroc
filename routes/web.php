@@ -15,14 +15,6 @@ Route::get('/', function () {
     return view('layouts.master');
 });
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-
-Route::get('addAffectation', function () {
-    return view('admin.addAffectation');
-});
 
 /* Utilisateur */
 
@@ -51,7 +43,7 @@ Route::get('Utilisateur/updateUtilisateur',[
 	'as'=>'updateUtilisateur'
 ]);
 
-Route::get('deleteUser/{id}',[
+Route::get('Utilisateur/deleteUser/{id}',[
 	'uses'=>'UtilisateurController@getUserDelete',
 	'as'=>'deleteUser'
 ]);
@@ -93,6 +85,27 @@ Route::get('deleteMaterial/{id}',[
 	'uses'=>'MaterielController@getMaterialDelete',
 	'as'=>'deleteMaterial'
 ]);
+
+//Ajax affectation Mat -> Uti
+
+Route::get('Utilisateur/getInfos/{id}',[
+	'uses'=>'UtilisateurController@getInfoUser'
+]);
+
+/* Affectation */
+
+Route::get('Affectation/materiel',[
+	'uses'=>'MaterielController@addMatAffectation',
+	'as'=>'addMatAffectation'
+]);
+
+/* Desaffectation */
+
+Route::get('Desaffectation/materiel/{id}',[
+	'uses'=>'MaterielController@MatDesaffect',
+	'as'=>'MatDesaffect'
+]);
+
 
 
 /* Fournisseur */
@@ -188,30 +201,6 @@ Route::get('Subcontractor/editSubcontractor/{id}',[
 	'uses'=>'SubcontractorController@getSubcontractorEdit',
 	'as'=>'editSubcontractor'
 ]);
-
-
-
-
-/* NOT YET */
-
-	
-
-Route::get('getAffectation',[
-	'uses'=>'admineController@getAffectation',
-	'as'=>'getAffectation'
-]);
-
-
-Route::post('storeAffectation',[
-	'uses'=>'admineController@storeAffectation',
-	'as'=>'storeAffectation'
-]);
-
-
-
-
-
-
 
 
 
