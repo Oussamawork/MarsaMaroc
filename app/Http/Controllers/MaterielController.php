@@ -10,7 +10,9 @@ use App\Type;
 use App\Utilisateur;
 use App\Reforme;
 use Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use App\Soustraitant;
+use PDF;
+
 
 class MaterielController extends Controller
 {
@@ -20,7 +22,8 @@ class MaterielController extends Controller
         $types=Type::all();
         $fournisseurs=Fournisseur::all();
         $utilisateurs=Utilisateur::all();
-        return view('admin.getMaterial',compact('materiels','types','fournisseurs','utilisateurs'));
+        $soustraitants=Soustraitant::all();
+        return view('admin.getMaterial',compact('materiels','types','fournisseurs','utilisateurs','soustraitants'));
     }
 
     public function getMataddview()
@@ -74,6 +77,7 @@ class MaterielController extends Controller
             $reforme->materiels()->delete();
             $reforme->delete();
         } else {
+            $materiel->pannes()->delete();
             $materiel->delete();
         }
         return back()->with('info','Materiel supprimé avec succès');
@@ -141,15 +145,19 @@ class MaterielController extends Controller
    {
         $mytime = Carbon\Carbon::now();
 
+        
+        $mat=Materiel::find($request['id']);
+
         $reforme = new Reforme;  
         $reforme->date_reforme = $mytime->toDateString() ;
         $reforme->save();
 
-        $mat = Materiel::find($request['id']);
+        $materiel = Materiel::find($request['id']);
 
-        $reforme->materiels()->save($mat);
+        $reforme->materiels()->save($materiel);
 
         return back()->with('info','Matériel reformé');
+        
    }
 
    

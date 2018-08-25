@@ -8,16 +8,16 @@ class Panne extends Model
 {
     public function materiel()
     {
-        return $this->belongsTo('Materiel');
+        return $this->belongsTo(Materiel::class);
     }
 
-    public function sous_traitant()
+    public function soustraitant()
     {
-        return $this->belongsTo('Soustraitant');
+        return $this->belongsTo(Soustraitant::class);
     }
 
     public function bonsortie()
     {
-        return $this->belongsTo('Bonsortie');
+        return $this->belongsTo(Bonsortie::class);
     }
 }

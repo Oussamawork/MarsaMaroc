@@ -8,6 +8,6 @@ class Bonsortie extends Model
 {
     public function pannes()
     {
-        return $this->hasMany('Panne');
+        return $this->hasMany(Panne::class);
     }
 }

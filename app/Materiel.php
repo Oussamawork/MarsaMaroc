@@ -31,10 +31,15 @@ class Materiel extends Model
     {
         return $this->belongsTo(Type::class);
     }
-
+    
     public function isReformed()
     {
-        return ($this->reforme_id != null) ? true : false;
+        return ($this->reforme_id != null) ? true : false;  
+    }
+    
+    public function isBroken()
+    {
+        return ($this->pannes->first()) ? true : false;  
     }
 
     public function isDisponible()

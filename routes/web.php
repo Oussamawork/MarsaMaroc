@@ -76,11 +76,6 @@ Route::get('Material/updateMateriel',[
 	'as'=>'updateMateriel'
 ]);
 
-Route::get('Material/reformMateriel',[
-	'uses'=>'MaterielController@reformMateriel',
-	'as'=>'reformMateriel'
-]);
-
 Route::get('deleteMaterial/{id}',[
 	'uses'=>'MaterielController@getMaterialDelete',
 	'as'=>'deleteMaterial'
@@ -108,9 +103,55 @@ Route::get('Desaffectation/materiel/{id}',[
 
 
 
+/* Reforme */
+
+Route::get('Material/reformMateriel',[
+	'uses'=>'MaterielController@reformMateriel',
+	'as'=>'reformMateriel'
+]);
+
+Route::get('Reforme/getReforme',[
+	'uses'=>'ReformeController@getReforme',
+	'as'=>'getReforme'
+]);
+
+Route::get('CancelReforme/{id}',[
+	'uses'=>'ReformeController@CancelReforme',
+	'as'=>'CancelReforme'
+]);
+
+Route::get('getPDFReforme/{id}',[
+	'uses'=>'BonSortieController@getPDFReforme',
+	'as'=>'getPDFReforme'
+]);
+
+
+/* Panne */
+
+
+Route::get('Panne/getPanne',[
+	'uses'=>'PanneController@getPanne',
+	'as'=>'getPanne'
+]);
+
+Route::get('Panne/storePanne',[
+	'uses'=>'PanneController@storePanne',
+	'as'=>'storePanne'
+]);
+
+Route::get('deletePanne/{id}',[
+	'uses'=>'PanneController@PanneDelete',
+	'as'=>'deletePanne'
+]);
+
+
+Route::get('getPDFPanne/{id}',[
+	'uses'=>'BonSortieController@getPDFPanne',
+	'as'=>'getPDFPanne'
+]);
+
+
 /* Fournisseur */
-
-
 
 Route::get('Fournisseur/getFournisseur',[
 	'uses'=>'FournisseurController@getFournisseur',

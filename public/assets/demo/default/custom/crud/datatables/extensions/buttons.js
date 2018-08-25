@@ -30,7 +30,7 @@ var DatatablesExtensionButtons = {
                                 class: " m-badge--info"
                             },
                             6: {
-                                title: "Danger",
+                                title: "Panne",
                                 class: " m-badge--danger"
                             },
                             7: {
