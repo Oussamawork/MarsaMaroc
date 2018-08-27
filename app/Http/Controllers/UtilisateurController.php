@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Entity;
-
 use App\Utilisateur;
+use App\User;
+use Carbon;
 
 class UtilisateurController extends Controller
 {
@@ -85,10 +87,52 @@ class UtilisateurController extends Controller
         return back()->with('info','Modification avec succes');
     }
 
+    public function roleUtilisateur(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = User::create([
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'is_super_admin' => 1,
+        ]);
+
+        $utilisateur = Utilisateur::find($request['id']);
+        $user->utilisateurs()->save($utilisateur);
+
+        return back()->with('info','Role Changer');
+    }
+
     public function getUserDelete($id)
     {
+        $mytime = Carbon\Carbon::now();
+        
         $utilisateur=Utilisateur::find($id);
-        $utilisateur->delete();
+        $user_id = $utilisateur->user_id;
+
+        //bach end_affectation li ba9in NULL dialo (zaama affecter) mayb9awch (fhem tseta :P)
+        if(filled($utilisateur->materiels()->get())) {
+            $mts = $utilisateur->materiels()->get();
+            foreach($mts as $m)
+            {
+                if(is_null($m->utilisateurs->last()->pivot->end_affectation)) {
+                    $utilisateur_id = $m->utilisateurs->last()->pivot->utilisateur_id;
+                    $m->utilisateurs()->updateExistingPivot($utilisateur_id,['end_affectation' => $mytime->toDateString()]);
+                }
+            }
+        }
+
+        if( $user_id != 0) {    
+            $utilisateur->delete();
+            $user = User::find($user_id);
+            $user->delete();
+        } else {
+            $utilisateur->delete();
+        }
+
         return back()->with('info','Utilisateur supprimé avec succès');
     }
 }

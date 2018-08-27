@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-liste materiels
+liste matériels
 @endsection
 
 @section('customCSS')
@@ -38,7 +38,7 @@ liste materiels
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                    Liste des Materiels
+                    Liste des Matériels
                 </h3>
             </div>
         </div>
@@ -50,7 +50,7 @@ liste materiels
                         <span>
                             <i class="flaticon-add-circular-button"></i>
                             <span>
-                                Nouveau Materiel
+                                Nouveau Matériel
                             </span>
                         </span>
                     </a>
@@ -162,13 +162,13 @@ liste materiels
                         Date d'acquisition
                     </th>
                     <th>
-                        Type1
-                    </th>
-                    <th>
-                        Type2
-                    </th>
-                    <th>
                         Durée de guarantie
+                    </th>
+                    <th>
+                        État
+                    </th>
+                    <th>
+                        Affectations
                     </th>
                     <th>
                         Actions
@@ -185,7 +185,7 @@ liste materiels
         <div class="modal-content" id="modal1" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Modifer le materiel
+                    Modifer le matériel
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
@@ -339,7 +339,7 @@ liste materiels
         <div class="modal-content" id="modal1" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Affecter le materiel
+                    Affecter le matériel
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
@@ -453,7 +453,7 @@ liste materiels
                 <div class="modal-body">
                     <div class="form-group m-form__group row">
                         <div class="div col-lg-4">
-                            <label>ID du Materiel:</label>
+                            <label>ID du Matériel:</label>
                             <input type="text" id="iD" name="id"  class="form-control m-input m-input--air m-input--pill m-form--state" readonly>
                         </div>
                     </div>

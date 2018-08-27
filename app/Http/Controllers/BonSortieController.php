@@ -34,7 +34,19 @@ class BonSortieController extends Controller
 
         $pdf=PDF::loadView('pdf.bonsortieReforme',compact('mat','sortie'));
 
-        return  $pdf->download('bonsortieReforme.pdf', 'bonsortieReforme' , ['location' => '/Material/getMaterial']) ;
+        return  $pdf->download('bonsortieReforme.pdf') ;
+
+    }
+
+    public function getPDFAffectation($id)
+    {
+        $mytime = Carbon\Carbon::now();
+        $sortie = $mytime->toDateString();
+        $mat = Materiel::find($id);
+
+        $pdf=PDF::loadView('pdf.bonsortieAffectation',compact('mat','sortie'));
+
+        return  $pdf->download('bonsortieAffectation.pdf') ;
 
     }
 }

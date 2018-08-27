@@ -1,6 +1,6 @@
 @extends('layouts.master') 
 @section('title') 
-liste pannes 
+liste Affectation 
 @endsection 
 
 @section('customCSS')
@@ -31,7 +31,7 @@ liste pannes
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                    Liste des Pannes
+                    Liste Matériels Affecter
                 </h3>
             </div>
         </div>
@@ -45,19 +45,19 @@ liste pannes
                         ID
                     </th>
                     <th>
+                        Référence
+                    </th>
+                    <th>
                         Type
                     </th>
                     <th>
-                        Description
-                    </th>
-                    <th>
-                        Date de panne
+                        Descriptions
                     </th>
                     <th width="150px">
-                        Réference materiel
+                        Fournisseur
                     </th>
-                    <th>
-                        Sous-traitant
+                    <th width="150px">
+                        Date d'acquisition
                     </th>
                     <th width="20px">
                         Actions
@@ -71,23 +71,24 @@ liste pannes
                 </tr>
             </thead>
             <tbody>
-                @foreach($pannes as $p)
+                @foreach($pivots as $pivot)
+
+                <?php 
+                    $mat = $materiel->getMat($pivot->materiel_id)
+                ?>
                     <tr>
-                        <td>{{$p->id}}</td>
-                        <td>{{$p->type}}</td>
-                        <td>{{$p->description}}</td>
-                        <td>{{$p->brokendown_date}}</td>
-                        <td>{{$p->materiel->serial}}</td>
-                        <td>{{$p->soustraitant->nom}}_{{$p->soustraitant->prenom}}</td>
+                        <td>{{$mat->id}}</td>
+                        <td>{{$mat->serial}}</td>
+                        <td>{{$mat->type->label}}</td>
+                        <td>{{$mat->description}}</td>
+                        <td>{{$mat->fournisseur->name}}</td>
+                        <td>{{$mat->date_acquisition}}</td>
                         <td>
-                            <a href="{{route('deletePanne',['id'=>$p->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill" title="panne fixée!">
-                                <i class="fa fa-check"></i>
-                            </a>
-                            <a href="{{route('getPDFPanne',['id'=>$p->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill" title="Bon sortie">
+                            <a href="{{route('getPDFAffectation',['id'=>$mat->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill" title="Bon sortie">
                                 <i class="flaticon-interface-9"></i>
                             </a>
                         </td>
-                        <td>6</td>
+                        <td>4</td>
                         <td class="col1"></td>
                     </tr>
                 @endforeach
@@ -98,25 +99,29 @@ liste pannes
                         ID
                     </th>
                     <th>
+                        Référence
+                    </th>
+                    <th>
                         Type
                     </th>
                     <th>
-                        Description
-                    </th>
-                    <th>
-                        Date de panne
+                        Descriptions
                     </th>
                     <th width="150px">
-                        Réference materiel
+                        Fournisseur
                     </th>
-                    <th>
-                        Sous-traitant
+                    <th width="150px">
+                        Date d'acquisition
                     </th>
+
                     <th width="20px">
                         Actions
                     </th>
                     <th width="50px">
                         État
+                    </th>
+                    <th class="col1">
+
                     </th>
                     <th class="col1">
 

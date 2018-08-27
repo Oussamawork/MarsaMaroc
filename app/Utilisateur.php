@@ -22,4 +22,9 @@ class Utilisateur extends Model
     {
         return $this->belongsTo(Entity::class);
     }
+
+    public function getFullName($id)
+    {
+        return Utilisateur::find($id);
+    }
 }

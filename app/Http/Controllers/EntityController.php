@@ -16,28 +16,17 @@ use PDF;
 
 class EntityController extends Controller
 {
-    //
-
-        public function getaddview()
+    public function getaddview()
     {
     	return view('admin.addType&Entity');
     }
 
       public function storeEntity(Request $request)
     {
-        
-        
-        
-        
-       
-
-        $entite = new Entity;
-
-        
-        
+        $entite = new Entity;   
         $entite->label = $request['label'];
         $entite->save();        
 
-      return back()->with('info','entité ajouté  avec succès');
+        return back()->with('info','Entité ajouté  avec succès');
     }
 }

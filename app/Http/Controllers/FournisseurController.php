@@ -49,15 +49,7 @@ class FournisseurController extends Controller
     	return view('admin.getFournisseur',compact('fournisseurs'));
     }
 
-    public function getFournisseurDelete($id)
-    {
-       $fournisseur=Fournisseur::find($id);
-       $fournisseur->delete();
-       return back()->with('info','Materiel supprimé avec succès');
-
-    }
-
-        public function updateFournisseur(Request $request)
+    public function updateFournisseur(Request $request)
     {
          $fournisseur=Fournisseur::find($request['id']);
          $fournisseur->name=$request->input('name');

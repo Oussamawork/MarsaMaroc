@@ -71,7 +71,7 @@ liste fournisseurs
                             Fax
                         </th>
                     
-                        <th>
+                        <th width="5%">
                             Actions
                         </th>
                         <th class="col1">
@@ -101,9 +101,6 @@ liste fournisseurs
                                 <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $f->id }}">
                                     <i class="la la-edit"></i>
                                 </button>
-                                <a href="{{route('deleteFournisseur',['id'=>$f->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
-                                    <i class="la la-trash"></i>
-                                </a>
                             </span>
                         </td>
                         <td class="col1"></td>

@@ -59,12 +59,11 @@ liste reformer
                     <th width="150px">
                         Date d'acquisition
                     </th>
-
-                    <th width="100px">
+                    <th width="90px">
                         Actions
                     </th>
-                    <th class="col1">
-
+                    <th width="50px">
+                        État
                     </th>
                     <th class="col1">
 
@@ -81,7 +80,7 @@ liste reformer
                         <td>{{$mat->fournisseur->name}}</td>
                         <td>{{$mat->date_acquisition}}</td>
                         <td>
-                            <a href="{{route('CancelReforme',['id'=>$mat->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill" title="panne fixée!">
+                            <a href="{{route('CancelReforme',['id'=>$mat->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill" title="Reformation Annulée!">
                                 <i class="fa fa-check"></i>
                             </a>
                             <a href="{{route('getPDFReforme',['id'=>$mat->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill" title="Bon sortie">
@@ -91,7 +90,7 @@ liste reformer
                                 <i class="la la-trash"></i>
                             </a>
                         </td>
-                        <td class="col1"></td>
+                        <td>7</td>
                         <td class="col1"></td>
                     </tr>
                 @endforeach
@@ -116,12 +115,11 @@ liste reformer
                     <th width="150px">
                         Date d'acquisition
                     </th>
-
-                    <th width="100px">
+                    <th width="90px">
                         Actions
                     </th>
-                    <th class="col1">
-
+                    <th width="50px">
+                        État
                     </th>
                     <th class="col1">
 

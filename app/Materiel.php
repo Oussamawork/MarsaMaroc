@@ -55,4 +55,10 @@ class Materiel extends Model
                     ->end_affectation ? true : false;
     }
     
+    public function getMat($id)
+    {
+        $materiel = Materiel::find($id);
+
+        return $materiel;
+    }
 }

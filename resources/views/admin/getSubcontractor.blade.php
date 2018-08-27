@@ -83,8 +83,8 @@ liste sous-traitants
                         <th>
                             Service
                         </th>
-                       
-                        <th>
+                        
+                        <th width="8%">
                             Actions
                         </th>
                         <th class="col1">

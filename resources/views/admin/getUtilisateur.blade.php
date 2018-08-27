@@ -79,10 +79,7 @@
                     <th title="Field #9">
                         Status
                     </th>
-                    <th>
-                        Type
-                    </th>
-                    <th>
+                    <th width="8%">
                         Actions
                     </th>
                 </tr>
@@ -122,15 +119,14 @@
                             {{ $u->user_id === 0 ? 4 : 6 }} 
                         </td>
                         <td>
-                            2
-                        </td>
-                        <td>
                             <span style="overflow: visible; position: relative; width: 110px;">
                                 <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit"
-                                    data-id="{{ $u->id }}"
-                                    >
-                                    
+                                    data-id="{{ $u->id }}">
                                     <i class="la la-edit"></i>
+                                </button>
+                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-role"  data-toggle="modal" data-target="#Role"
+                                    data-id="{{ $u->id }}">
+                                    <i class="flaticon-user-settings"></i>
                                 </button>
                                 <a href="{{route('deleteUser',['id'=>$u->id])}}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"
                                     title="Delete">
@@ -168,9 +164,6 @@
                         Status
                     </th>
                     <th>
-                        Type
-                    </th>
-                    <th>
                         Actions
                     </th>
                 </tr>
@@ -197,7 +190,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="updateUtilisateur" method="get">
+            <form action="{{route('updateUtilisateur')}}" method="get">
                     <div class="form-group m-form__group row">
                         <div class="div col-lg-4">
                             <label>ID:</label>
@@ -290,6 +283,82 @@
 <!--end::Modal-->
 
 
+<!--begin::Modal Edit-->
+<div class="modal fade" id="Role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modal1" >
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Modifer l'utilisateur
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        &times;
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form action="{{route('roleUtilisateur')}}" method="get">
+                    <div class="form-group m-form__group row">
+                        <div class="div col-lg-4">
+                            <label>ID:</label>
+                            <input type="text" id="IDR" name="id" class="form-control m-input m-input--air m-input--pill m-form--state" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-form__group row">
+                        <div class="div col-lg-4 {{ $errors->has('email') ? 'has-danger' : '' }}">
+                            <label>
+                                Email:
+                            </label>
+                            <input id="email" type="email" class="form-control m-input m-input--air m-input--pill m-form--state{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="div col-lg-4 {{ $errors->has('password') ? 'has-danger' : '' }}">
+                            <label>
+                                Mot De Passe:
+                            </label>
+                            <input id="password" type="password" class="form-control m-input m-input--air m-input--pill m-form--state{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="div col-lg-4 {{ $errors->has('password-confirm') ? 'has-danger' : '' }}">
+                            <label>
+                                Confirmer Mot De Passe :
+                            </label>
+                            <input id="password-confirm" type="password" class="form-control m-input m-input--air m-input--pill m-form--state" name="password_confirmation" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-gray" data-dismiss="modal">
+                            Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modal-->
+
+
+
+
+
+
+
+
 <!--begin::Modal Historique-->
 <div class="modal fade" id="Historique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -306,83 +375,14 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="updateUtilisateur" method="get">
+                <form action="updateUtilisateur" method="get">
                     <div class="form-group m-form__group row">
                         <div class="div col-lg-4">
                             <label>ID:</label>
                             <input type="text" id="id" name="id" class="form-control m-input m-input--air m-input--pill m-form--state" readonly>
                         </div>
                     </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="div col-lg-4 {{ $errors->has('firstname') ? 'has-danger' : '' }}">
-                            <label>
-                                Prenom:
-                            </label>
-                            <input id="firstname" type="text" class="form-control m-input m-input--air m-input--pill m-form--state" id="firstname" name="firstname" value="{{ Session('firstname') ? Session('firstname') : old('firstname') }}">
-                            @if ($errors->has('firstname'))
-                                <div class="form-control-feedback">
-                                    {{ $errors->first('firstname') }}
-                                </div>
-                            @endif
-                        </div>
-                        <div class="div col-lg-4 {{ $errors->has('lastname') ? 'has-danger' : '' }}">
-                            <label>
-                                Nom:
-                            </label>
-                            <input type="text" id="lastname" class="form-control m-input m-input--air m-input--pill m-form--state" name="lastname" value="{{ Session('lastname') ? Session('lastname') : old('lastname') }}">
-                            @if ($errors->has('lastname'))
-                                <div class="form-control-feedback">
-                                    {{ $errors->first('lastname') }}
-                                </div>
-                            @endif
-                        </div>
-                        <div class="div col-lg-4 {{ $errors->has('recrutment_date') ? 'has-danger' : '' }}">
-                            <label>
-                                Date recrutement :
-                            </label>
-                            <input type="text" id="recrutment_date" class="form-control m-input m-input--air m-input--pill" name="recrutment_date" value="{{ Session('recrutment_date') ? Session('recrutment_date') : old('recrutment_date') }}">
-                            @if ($errors->has('recrutment_date'))
-                                <div class="form-control-feedback">
-                                    {{ $errors->first('recrutment_date') }}
-                                </div>
-                            @endif
-                        </div>
-                    </div>
                     
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-6 {{ $errors->has('matricule') ? 'has-danger' : '' }}">
-                            <label>
-                                Matricule:
-                            </label>
-                            <input type="text" id="matricule" class="form-control m-input m-input--air m-input--pill" name="matricule" value="{{ Session('matricule') ? Session('matricule') : old('matricule') }}">
-                            @if ($errors->has('matricule'))
-                                    <div class="form-control-feedback">
-                                        {{ $errors->first('matricule') }}
-                                    </div>
-                                @endif
-                            </div>
-
-                        <div class="col-lg-6 {{ $errors->has('entite') ? 'has-danger' : '' }}">
-                                <label>
-                                    Entité : 
-                                </label>
-                                <select class="form-control m-input m-input--air m-input--pill" id="entite" name="entite">
-                                    @foreach($entities as $entity)
-                                        <option value="{{ $entity->id }}">
-                                            {{ $entity->label }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('entite'))
-                                    <div class="form-control-feedback">
-                                        {{ $errors->first('entite') }}
-                                    </div>
-                                @endif
-                        </div>
-
-                        
-                    </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-gray" data-dismiss="modal">
                             Annuler
@@ -434,6 +434,13 @@
             $('#entite').val(data['entity_id']);
           }
         });
+    });
+
+    $("#Role").on('show.bs.modal',function(e){
+        var id = $(e.relatedTarget).data('id');
+        
+        $('#IDR').val(id); 
+
     });
 
 

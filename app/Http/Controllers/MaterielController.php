@@ -12,6 +12,7 @@ use App\Reforme;
 use Carbon;
 use App\Soustraitant;
 use PDF;
+use DB;
 
 
 class MaterielController extends Controller
@@ -107,6 +108,15 @@ class MaterielController extends Controller
    }
 
 
+   public function getAffectation()
+   {
+        $pivots = DB::table('utilisateur_materiel')
+                        ->select('materiel_id')
+                        ->whereNull('end_affectation')
+                        ->get();
+        $materiel = Materiel::first();
+        return view('admin.getAffectation',compact('pivots','materiel'));
+   }
    //Affecter un materiel
 
    public function addMatAffectation(Request $request)
