@@ -37,6 +37,12 @@ Route::get('Utilisateur/editUtilisateur/{id}',[
 	'middleware' => 'auth'
 ]);
 
+Route::get('Utilisateur/historique/{id}',[
+	'uses'=>'UtilisateurController@historiqueUtilisateur',
+	'as'=>'historiqueUtilisateur',
+	'middleware' => 'auth'
+]);
+
 Route::get('Utilisateur/updateUtilisateur',[
 	'uses'=>'UtilisateurController@updateUtilisateur',
 	'as'=>'updateUtilisateur',

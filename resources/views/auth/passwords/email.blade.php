@@ -13,6 +13,11 @@ Reset
     </a>
 </div>
 <div class="m-login__head">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <h3 class="m-login__title">
         Forgotten Password ?
     </h3>
@@ -32,7 +37,7 @@ Reset
     </div>
     <div class="m-login__form-action">
         <button type="submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air  m-login__btn m-login__btn--primaryr">
-            Request
+            Send
         </button>
     </div>
 </form>

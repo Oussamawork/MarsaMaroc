@@ -63,6 +63,13 @@ class UtilisateurController extends Controller
         return json_encode($utilisateur);
     }
     
+    //Ajax historique
+    public function historiqueUtilisateur($id)
+    {
+        $utilisateur = Utilisateur::find($id);
+        $materiels = $utilisateur->materiels;
+        return json_encode($materiels);
+    }
 
     public function updateUtilisateur(Request $request)
     {

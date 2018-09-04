@@ -10,32 +10,24 @@ class UtilisateursTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        for($i = 0 ; $i < 20 ; $i++)
-        {   
-                DB::table('utilisateurs')->insert([
-            
-                    'firstname' => str_random(10),
-                    'lastname' => str_random(10),
-                    'recrutment_date' => '2018-07-28',
-                    'matricule' => str_random(10),
-                    'entity_id' => 1,
-                    'user_id' => 0
+    {  
+        DB::table('users')->insert([
+            'email' => 'marsamaroc@gmail.com',
+            'password' => Hash::make(123456),
+            'is_super_admin' => 0
+        ]);
 
-                ]);
+        DB::table('utilisateurs')->insert([
+    
+            'firstname' => str_random(10),
+            'lastname' => str_random(10),
+            'recrutment_date' => '2018-07-28',
+            'matricule' => str_random(10),
+            'entity_id' => 1,
+            'user_id' => 1
+
+        ]);
                 
-                DB::table('utilisateurs')->insert([
-
-                    'firstname' => str_random(10),
-                    'lastname' => str_random(10),
-                    'recrutment_date' => '2018-07-28',
-                    'matricule' => str_random(10),
-                    'entity_id' => 2,
-                    'user_id' => 1
-
-                ]);
-        }
-
         DB::table('entities')->insert([
 
             'label' => 'DHJ',

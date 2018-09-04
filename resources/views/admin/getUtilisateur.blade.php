@@ -73,13 +73,13 @@
                     <th title="Field #6">
                         Entité
                     </th>
-                    <th>
+                    <th width="5%">
                         Historique Matériels
                     </th>
                     <th title="Field #9">
                         Status
                     </th>
-                    <th width="8%">
+                    <th width="10%">
                         Actions
                     </th>
                 </tr>
@@ -108,8 +108,7 @@
                         <td>
                             <span>
                                 <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only"  data-toggle="modal" data-target="#Historique"
-                                    data-id="{{ $u->id }}"
-                                    >
+                                    data-id="{{ $u->id }}" title="Historique">
                                     
                                     <i class="flaticon-list-1"></i>
                                 </button>
@@ -121,11 +120,11 @@
                         <td>
                             <span style="overflow: visible; position: relative; width: 110px;">
                                 <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit"
-                                    data-id="{{ $u->id }}">
+                                    data-id="{{ $u->id }}" title="Edit">
                                     <i class="la la-edit"></i>
                                 </button>
                                 <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-role"  data-toggle="modal" data-target="#Role"
-                                    data-id="{{ $u->id }}">
+                                    data-id="{{ $u->id }}" title="Status" {{ $u->user_id == 0 ? : "disabled"}}>
                                     <i class="flaticon-user-settings"></i>
                                 </button>
                                 <a href="{{route('deleteUser',['id'=>$u->id])}}" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"
@@ -283,7 +282,7 @@
 <!--end::Modal-->
 
 
-<!--begin::Modal Edit-->
+<!--begin::Modal Role-->
 <div class="modal fade" id="Role" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modal1" >
@@ -353,12 +352,6 @@
 <!--end::Modal-->
 
 
-
-
-
-
-
-
 <!--begin::Modal Historique-->
 <div class="modal fade" id="Historique" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -375,33 +368,47 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="updateUtilisateur" method="get">
-                    <div class="form-group m-form__group row">
-                        <div class="div col-lg-4">
-                            <label>ID:</label>
-                            <input type="text" id="id" name="id" class="form-control m-input m-input--air m-input--pill m-form--state" readonly>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-gray" data-dismiss="modal">
-                            Annuler
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            Enregistrer
-                        </button>
-                    </div>
-                </form>
+                <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                    <thead>
+                        <tr>
+                            <th title="ID">
+                                Id matériel
+                            </th>
+                            <th title="Field #2">
+                                Déscription
+                            </th>
+                            <th title="Field #3">
+                                Date debut d'affectation
+                            </th>
+                            <th title="Field #4">
+                                Date fin d'affectation
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody name="ici">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                Id matériel
+                            </th>
+                            <th>
+                                Déscription
+                            </th>
+                            <th>
+                                Date debut d'affectation
+                            </th>
+                            <th>
+                                Date fin d'affectation
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
 </div>
 <!--end::Modal-->
-
-
-
-
-
 
 
 
@@ -440,6 +447,28 @@
         var id = $(e.relatedTarget).data('id');
         
         $('#IDR').val(id); 
+
+    });
+    
+    $("#Historique").on('show.bs.modal',function(e){
+        var id = $(e.relatedTarget).data('id');
+        $.ajax({
+
+            url : '/Utilisateur/historique/'+id, //Here you will fetch records 
+            type : 'get',
+            dataType: "json" ,
+            
+            success : function(data){
+
+                $('tbody[name="ici"]').empty();
+
+                $.each(data, function(key, value){
+                    $('tbody[name="ici"]').append('<tr><td>'+value.id+'</td> <td>'+value.description+'</td> <td>'+value.pivot.start_affectation+'</td> <td>'+value.pivot.end_affectation+'</td> </tr>');
+                });
+            
+                
+            },
+        });
 
     });
 
