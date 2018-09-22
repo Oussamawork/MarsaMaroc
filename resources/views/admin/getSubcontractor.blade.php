@@ -3,7 +3,7 @@
 liste sous-traitants
 @endsection
 @section('customCSS')
-<link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .col1 {display: none; }
 </style>
@@ -34,7 +34,7 @@ liste sous-traitants
             </div>
 
 
- <div class="m-portlet__head-tools">
+            <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
                         <a href="{{route('addSubcontractor')}}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air">
@@ -45,27 +45,17 @@ liste sous-traitants
                                 </span>
                             </span>
                         </a>
-                    </li>
-                    
-                  
+                    </li> 
                 </ul>
-            
+            </div>
         </div>
 
-
-
-        </div>
         <div class="m-portlet__body">
-            
-
-
-           
-    
             <!--begin: Datatable -->
-             <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
-           <thead>
-              <tr>
-                       <th title="ID"> 
+            <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                <thead>
+                    <tr>
+                        <th title="ID"> 
                             ID
                         </th>
                         <th>
@@ -88,62 +78,38 @@ liste sous-traitants
                             Actions
                         </th>
                         <th class="col1">
-                            
                         </th>
-                        <th class="col1">
-                            
-                        </th>
-                       
-                       
-             </tr>
-          </thead>
-                                    <tbody>
-                                        @foreach($soustraitants as $s)
-                                        <tr>
-                                            <td>{{$s->id}}</td>
-                                             <td>{{$s->nom}}</td>
-                                              <td>{{$s->prenom}}</td>
-                                               <td>{{$s->date_debut}}</td>
-                                            
-                                               
-                                                <td>{{$s->date_fin}}</td>
-                                               
-                                                 <td>{{$s->service}}</td>
-                                                            <td>
-                                                   
-                                                      <span style="overflow: visible; position: relative; width: 110px;">
-                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit"
-                                    data-id="{{ $s->id }}"
-                                   >
-                                    
+                        <th class="col1">  
+                        </th>         
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($soustraitants as $s)
+                    <tr>
+                        <td>{{$s->id}}</td>
+                        <td>{{$s->nom}}</td>
+                        <td>{{$s->prenom}}</td>
+                        <td>{{$s->date_debut}}</td>
+                        <td>{{$s->date_fin}}</td>
+                        <td>{{$s->service}}</td>
+                        <td>
+                            <span style="overflow: visible; position: relative; width: 110px;">
+                                <button class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-edit"  data-toggle="modal" data-target="#Edit" data-id="{{ $s->id }}">
                                     <i class="la la-edit"></i>
                                 </button>
-                                <a href="{{route('deleteSubcontractor',['id'=>$s->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"
-                                             title="Delete">
-                                            <i class="la la-trash"></i>
-                                           </a>
-                                                    </span>
-
-                                                    </td>
-                                                 <td class="col1"></td>
-                                                 <td class="col1"></td>
-                                                 
-                                                 
-                                         </tr>
-
-                                    @endforeach
-                                    </tbody>
-
-
-
-
-                        
-       
-
-
-                                    <tfoot>
-                                        <tr>
-                         <th title="ID"> 
+                                <a href="{{route('deleteSubcontractor',['id'=>$s->id])}}" class="m-portlet__nav-link btn m-btn   m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td class="col1"></td>
+                        <td class="col1"></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th title="ID"> 
                             ID
                         </th>
                         <th>
@@ -161,30 +127,26 @@ liste sous-traitants
                         <th>
                             Service
                         </th>
-                       
-                        <th>
+                       <th>
                             Actions
                         </th>
                         <th class="col1">
-                            
+                    
                         </th>
                         <th class="col1">
-                            
+                    
                         </th>
-                       
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                    </tr>
+                </tfoot>
+            </table>
             <!--end: Datatable -->
-        
-    </div>
-    </div>
+        </div>
+</div>
 
 
 <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modal1" >
-
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                     Modifer le fournisseur
@@ -196,7 +158,7 @@ liste sous-traitants
                 </button>
             </div>
             <div class="modal-body">
-            <form action="updateSubcontractor" method="get">
+                <form action="updateSubcontractor" method="get">
                     <div class="form-group m-form__group row">
                         <div class="div col-lg-4">
                             <label>ID:</label>
@@ -267,8 +229,7 @@ liste sous-traitants
                                 </div>
                             @endif
                         </div>
-                     
-                       </div>
+                    </div>
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-gray" data-dismiss="modal">
@@ -278,14 +239,12 @@ liste sous-traitants
                             Enregistrer
                         </button>
                     </div>
+
                 </form>
             </div>
         </div>
     </div>
-</div>
-
-     
-           
+</div>       
 
 @endsection('content')
 
@@ -295,13 +254,11 @@ liste sous-traitants
 @section('customJS')
 
 
-<script src="../../../assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-
-<script src="../../../assets/demo/default/custom/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
+<script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/demo/default/custom/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
 
   <script>
-
-   $("#Edit").on('show.bs.modal',function(e){
+$("#Edit").on('show.bs.modal',function(e){
         var id = $(e.relatedTarget).data('id');
         
         $.ajax({
@@ -322,8 +279,6 @@ liste sous-traitants
           }
         });
     });
-
-
 </script>
 
 

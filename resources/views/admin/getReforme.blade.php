@@ -4,7 +4,7 @@ liste reformer
 @endsection 
 
 @section('customCSS')
-<link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .col1 {
         display: none;
@@ -57,7 +57,7 @@ liste reformer
                         Fournisseur
                     </th>
                     <th width="150px">
-                        Date d'acquisition
+                        Date d&apos;acquisition
                     </th>
                     <th width="90px">
                         Actions
@@ -113,7 +113,7 @@ liste reformer
                         Fournisseur
                     </th>
                     <th width="150px">
-                        Date d'acquisition
+                        Date d&apos;acquisition
                     </th>
                     <th width="90px">
                         Actions
@@ -142,9 +142,9 @@ liste reformer
 @section('customJS')
 
 
-<script src="../../../assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 
-<script src="../../../assets/demo/default/custom/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
+<script src="{{asset('assets/demo/default/custom/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
 
 
 

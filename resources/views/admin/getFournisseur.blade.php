@@ -3,7 +3,7 @@
 liste fournisseurs
 @endsection
 @section('customCSS')
-<link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .col1 {display: none; }
 </style>
@@ -34,7 +34,6 @@ liste fournisseurs
             </div>
         </div>
 
-
         <div class="m-portlet__head-tools">
             <ul class="m-portlet__nav">
                 <li class="m-portlet__nav-item">
@@ -56,36 +55,32 @@ liste fournisseurs
             <thead>
                 <tr>
                     <th title="ID"> 
-                            ID
-                        </th>
-                        <th>
-                            Nom
-                        </th>
-                        <th>
-                            Telephone
-                        </th>
-                        <th>
-                            Adresse
-                        </th>
-                        <th>
-                            Fax
-                        </th>
+                        ID
+                    </th>
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Telephone
+                    </th>
+                    <th>
+                        Adresse
+                    </th>
+                    <th>
+                        Fax
+                    </th>
+                    <th width="5%">
+                        Actions
+                    </th>
+                    <th class="col1">
+                        
+                    </th>
+                    <th class="col1">
                     
-                        <th width="5%">
-                            Actions
-                        </th>
-                        <th class="col1">
-                            
-                        </th>
-                        <th class="col1">
-                            
-                        </th>
-                         <th class="col1">
-                            
-                        </th>
-                         
-                   
-
+                    </th>
+                    <th class="col1">
+                        
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -128,20 +123,18 @@ liste fournisseurs
                     <th>
                         Fax
                     </th>
-                
                     <th>
                         Actions
                     </th>    
                     <th class="col1">
                             
-                        </th>
-                        <th class="col1">
-                            
-                        </th> 
-                        <th class="col1">
-                            
-                        </th> 
-                                               
+                    </th>
+                    <th class="col1">
+                        
+                    </th> 
+                    <th class="col1">
+                        
+                    </th>                             
                 </tr>
             </tfoot>
         </table>
@@ -153,7 +146,6 @@ liste fournisseurs
 <div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-top:100px;" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" id="modal1" >
-
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                     Modifer le fournisseur
@@ -166,12 +158,12 @@ liste fournisseurs
             </div>
             <div class="modal-body">
             <form action="updateFournisseur" method="get">
-                    <div class="form-group m-form__group row">
-                        <div class="div col-lg-4">
-                            <label>ID:</label>
-                            <input type="text" id="id" name="id" class="form-control m-input m-input--air m-input--pill m-form--state" readonly>
-                        </div>
+                <div class="form-group m-form__group row">
+                    <div class="div col-lg-4">
+                        <label>ID:</label>
+                        <input type="text" id="id" name="id" class="form-control m-input m-input--air m-input--pill m-form--state" readonly>
                     </div>
+                </div>
 
                     <div class="form-group m-form__group row">
                         <div class="div col-lg-6 {{ $errors->has('name') ? 'has-danger' : '' }}">
@@ -198,9 +190,9 @@ liste fournisseurs
                             @endif
                         </div>
                         
-                        </div>
+                    </div>
                     
-                        <div class="form-group m-form__group row">
+                    <div class="form-group m-form__group row">
                         <div class="div col-lg-6 {{ $errors->has('address') ? 'has-danger' : '' }}">
                             <label>
                                 Adresse:
@@ -212,7 +204,6 @@ liste fournisseurs
                                 </div>
                             @endif
                         </div>
-
                         <div class="div col-lg-6 {{ $errors->has('fax') ? 'has-danger' : '' }}">
                             <label>
                                 Fax:
@@ -224,8 +215,7 @@ liste fournisseurs
                                 </div>
                             @endif
                         </div>
-                        
-                        </div>
+                    </div>
 
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-gray" data-dismiss="modal">

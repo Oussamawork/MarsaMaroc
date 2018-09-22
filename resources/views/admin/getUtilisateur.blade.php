@@ -180,7 +180,7 @@
 
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Modifer l'utilisateur
+                    Modifer l&apos;utilisateur
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
@@ -189,7 +189,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="{{route('updateUtilisateur')}}" method="get">
+                <form action="{{route('updateUtilisateur')}}" method="get">
                     <div class="form-group m-form__group row">
                         <div class="div col-lg-4">
                             <label>ID:</label>
@@ -289,7 +289,7 @@
 
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Modifer l'utilisateur
+                    Modifer le status utilisateur
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
@@ -378,10 +378,10 @@
                                 Déscription
                             </th>
                             <th title="Field #3">
-                                Date debut d'affectation
+                                Date debut d&apos;affectation
                             </th>
                             <th title="Field #4">
-                                Date fin d'affectation
+                                Date fin d&apos;affectation
                             </th>
                         </tr>
                     </thead>
@@ -396,10 +396,10 @@
                                 Déscription
                             </th>
                             <th>
-                                Date debut d'affectation
+                                Date debut d&apos;affectation
                             </th>
                             <th>
-                                Date fin d'affectation
+                                Date fin d&apos;affectation
                             </th>
                         </tr>
                     </tfoot>

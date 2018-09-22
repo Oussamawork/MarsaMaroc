@@ -80,7 +80,7 @@ liste matériels
                         Fournisseur
                     </th>
                     <th style="width: 50px;">
-                        Date d'acquisition
+                        Date d&apos;acquisition
                     </th>
                     <th style="width: 50px;">
                         Durée de guarantie
@@ -159,7 +159,7 @@ liste matériels
                         Fournisseur
                     </th>
                     <th>
-                        Date d'acquisition
+                        Date d&apos;acquisition
                     </th>
                     <th>
                         Durée de guarantie
@@ -264,7 +264,7 @@ liste matériels
                         </div>
                         <div class="div col-lg-4 {{ $errors->has('date_acquisition') ? 'has-danger' : '' }}">
                             <label>
-                                Date d'acquisition :
+                                Date d&apos;acquisition :
                             </label>
                             <input type="text" id="acquisition_date" class="form-control m-input m-input--air m-input--pill" name="date_acquisition" value="{{ Session('date_acquisition') ? Session('date_acquisition') : old('date_acquisition') }}">
                             @if ($errors->has('date_acquisition'))
@@ -411,7 +411,7 @@ liste matériels
                     <div class="form-group m-form__group row">
                         <div class="col-lg-4 {{ $errors->has('start_affectation') ? 'has-danger' : '' }}">
                             <label>
-                                Date d'affectation :
+                                Date d&apos;affectation :
                             </label>
                             <input type="text" class="form-control m-input m-input--air m-input--pill" id="start_affectation" name="start_affectation" readonly placeholder="Entrer la date d'affectation">
                             @if ($errors->has('start_affectation'))

@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Web font -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script src="{{ asset('assets/vendors/base/webfont.bundle.js') }}" type="text/javascript" ></script>
     <script>
         WebFont.load({
             google: {
@@ -34,12 +34,8 @@
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="{{ asset('assets/demo/demo12/media/img/logo/favicon.ico') }}" />
     @yield('customCSS')
-    
-    
-
 </head>
-<!-- end::Head -->
-<!-- end::Body -->
+
 
 <body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-light m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
     <div class="m-grid m-grid--hor m-grid--root m-page">
@@ -51,16 +47,11 @@
 				@include('partials.navbar')
                 @include('partials.aside_menu')
                 <div class="m-grid__item m-grid__item--fluid m-wrapper">
-
-					<div class="m-content">
-						
-						
+					<div class="m-content">	
                         @yield('content')
-					
                     </div>
                 </div>
 			</div>
-
 				@include('partials.footer')
             </div>
 

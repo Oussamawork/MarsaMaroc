@@ -4,7 +4,7 @@ liste Affectation
 @endsection 
 
 @section('customCSS')
-<link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .col1 {
         display: none;
@@ -57,7 +57,7 @@ liste Affectation
                         Fournisseur
                     </th>
                     <th width="150px">
-                        Date d'acquisition
+                        Date d&apos;acquisition
                     </th>
                     <th width="20px">
                         Actions
@@ -72,10 +72,9 @@ liste Affectation
             </thead>
             <tbody>
                 @foreach($pivots as $pivot)
-
-                <?php 
-                    $mat = $materiel->getMat($pivot->materiel_id)
-                ?>
+                    <?php 
+                        $mat = $materiel->getMat($pivot->materiel_id)
+                    ?>
                     <tr>
                         <td>{{$mat->id}}</td>
                         <td>{{$mat->serial}}</td>
@@ -111,7 +110,7 @@ liste Affectation
                         Fournisseur
                     </th>
                     <th width="150px">
-                        Date d'acquisition
+                        Date d&apos;acquisition
                     </th>
 
                     <th width="20px">
@@ -144,9 +143,9 @@ liste Affectation
 @section('customJS')
 
 
-<script src="../../../assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 
-<script src="../../../assets/demo/default/custom/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
+<script src="{{asset('assets/demo/default/custom/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
 
 
 

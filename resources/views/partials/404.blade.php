@@ -1,5 +1,6 @@
 <!doctype html>
-<link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
+
+<link href="{{asset('assets/vendors/base/404.bundle.css')}}" rel="stylesheet" type="text/css" />
 <body>
 <title>Page Introuvable</title>
         <!-- Error Page -->
@@ -10,7 +11,7 @@
                             <div class="clip"><div class="shadow"><span class="digit thirdDigit" style="background: #464545;"/span></div></div>
                             <div class="clip"><div class="shadow"><span class="digit secondDigit" style="background: #f90707;" ></span></div></div>
                             <div class="clip"><div class="shadow"><span class="digit firstDigit" style="background: #464545;"></span></div></div>
-                            <div class="msg" style="background: #464545;     color: #FFF;">OH!<span class="triangle" style="border-left: 20px solid #464545;"></span></div>
+                            <div class="msg" style="background: #464545; color: #FFF;">OH!<span class="triangle" style="border-left: 20px solid #464545;"></span></div>
                         </div>
                         <h2 class="h1" style="color: #000000;">Sorry! Page not found</h2>
                     </div>

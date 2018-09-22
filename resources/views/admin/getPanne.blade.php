@@ -4,7 +4,7 @@ liste pannes
 @endsection 
 
 @section('customCSS')
-<link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .col1 {
         display: none;
@@ -139,9 +139,9 @@ liste pannes
 @section('customJS')
 
 
-<script src="../../../assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 
-<script src="../../../assets/demo/default/custom/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
+<script src="{{asset('assets/demo/default/custom/crud/datatables/extensions/buttons.js')}}" type="text/javascript"></script>
 
 
 
