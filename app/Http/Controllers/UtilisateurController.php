@@ -9,6 +9,10 @@ use App\Entity;
 use App\Utilisateur;
 use App\User;
 use Carbon;
+use App\Mail\TESTEMAIL;
+use App\Events\ProjectCreated;
+use App\Events\Indexshowed;
+use App\Notifications\IndexOpened;
 
 class UtilisateurController extends Controller
 {
@@ -46,6 +50,13 @@ class UtilisateurController extends Controller
     {
         $entities = Entity::all();
         $utilisateurs=Utilisateur::all();
+         
+        //  Using Events
+        // // event(new Indexshowed($entities, $utilisateurs));
+
+        //Using Notification 
+        auth()->user()->notify(new IndexOpened);
+
         return view('admin.getUtilisateur',compact('utilisateurs', 'entities'));
     }
 

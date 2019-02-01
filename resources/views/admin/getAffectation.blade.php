@@ -9,7 +9,6 @@ liste Affectation
     .col1 {
         display: none;
     }
-
 </style>
 @endsection 
 

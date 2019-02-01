@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\Indexshowed;
 
 class Utilisateur extends Model
 {
     protected $fillable = ['firstname', 'lastname', 'recrutment_date', 'matricule'];
-
+    
     public function user()
     {
         return $this->belongsTo(User::class);
